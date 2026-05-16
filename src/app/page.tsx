@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllArticles } from "@/lib/articles";
 import { ArticleCard, HeroCard } from "@/components/ArticleCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
+import { AdSlot } from "@/components/AdSlot";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +54,8 @@ export default async function Home({ searchParams }: Props) {
                 <HeroCard article={hero} />
               </div>
             )}
+
+            <AdSlot slotId="home-after-hero" />
 
             {rest.length > 0 && (
               <section>

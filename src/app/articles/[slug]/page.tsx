@@ -4,6 +4,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { getArticle, getAllArticles } from "@/lib/articles";
 import { CATEGORY_LABELS } from "@/lib/categories";
+import { AdSlot } from "@/components/AdSlot";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
 const SITE_NAME = "Polymarket Watch";
@@ -196,8 +197,10 @@ export default async function ArticlePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: article.contentHtml }}
         />
 
+        <AdSlot slotId="article-bottom" />
+
         <div className="mt-12 pt-6 border-t border-slate-200 text-xs text-slate-500">
-          ※本記事は予測市場・公開ニュース等の情報に基づいて作成された解説記事です。投資判断は自己責任でお願いします。
+          ※本記事は予測市場・公開ニュース等の情報に基づいて作成された解説記事です。投資判断は自己責任でお願いします。当サイトはアフィリエイトプログラムに参加しており、記事内のリンクから取引所等に登録された場合、当サイトに紹介料が支払われることがあります。
         </div>
       </article>
     </div>
