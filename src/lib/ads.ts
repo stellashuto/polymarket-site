@@ -53,20 +53,23 @@ export const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ?? ""
 // 一覧ページのインフィード広告を「N記事ごとに」挿入するか
 export const IN_FEED_INTERVAL = 4;
 
+// A8ネットの広告タグ（programs.length が増えていくとローテーション）
+const A8_DMM_CFD: AdCreative = {
+  kind: "custom-html",
+  html: `<a href="https://px.a8.net/svt/ejp?a8mat=4B3RV0+C0U5KI+1WP2+NXU8H" rel="sponsored nofollow noopener" target="_blank"><img border="0" width="300" height="250" alt="DMM CFD" src="https://www22.a8.net/svt/bgt?aid=260516556727&wid=001&eno=01&mid=s00000008903004021000&mc=1"></a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4B3RV0+C0U5KI+1WP2+NXU8H" alt="">`,
+};
+
+// アフィリエイトプログラム一覧（増えたらここに追加するだけでローテーション対象になる）
+const AFFILIATE_CREATIVES: AdCreative[] = [
+  A8_DMM_CFD,
+];
+
 export const AD_SLOTS: Record<AdSlotId, AdSlot> = {
   // トップページのヒーロー記事の下
   "home-after-hero": {
     id: "home-after-hero",
     enabled: true,
-    creatives: [
-      {
-        kind: "text-link",
-        href: "https://example.com/aff/?ref=polymarket-watch",  // ← 実際のアフィURLに差し替え
-        title: "国内最大級の暗号資産取引所で口座を作る",
-        description: "最短10分で開設、ビットコイン・イーサリアム他、主要銘柄を取引可能。",
-        ctaLabel: "詳細を見る",
-      },
-    ],
+    creatives: AFFILIATE_CREATIVES,
   },
 
   // トップページ - 一覧の途中（インフィード表示型）
@@ -107,15 +110,7 @@ export const AD_SLOTS: Record<AdSlotId, AdSlot> = {
   "article-bottom": {
     id: "article-bottom",
     enabled: true,
-    creatives: [
-      {
-        kind: "text-link",
-        href: "https://example.com/aff/?ref=polymarket-watch",  // ← 実際のアフィURLに差し替え
-        title: "暗号資産を始めるなら",
-        description: "本記事で取り上げた銘柄も、国内取引所で日本円から購入できます。手数料・取扱銘柄を比較してみましょう。",
-        ctaLabel: "取引所を比較する",
-      },
-    ],
+    creatives: AFFILIATE_CREATIVES,
   },
 };
 

@@ -64,7 +64,10 @@ export function AdSlot({ slotId }: Props) {
       )}
 
       {creative.kind === "custom-html" && (
-        <div dangerouslySetInnerHTML={{ __html: creative.html }} />
+        <div
+          className="flex justify-center [&_img]:max-w-full [&_img]:h-auto"
+          dangerouslySetInnerHTML={{ __html: creative.html }}
+        />
       )}
     </div>
   );
