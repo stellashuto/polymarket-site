@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ?? "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,8 +80,22 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        {ADSENSE_CLIENT_ID && (
+          <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
+        )}
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {ADSENSE_CLIENT_ID && (
+          <Script
+            id="adsbygoogle-loader"
+            async
+            strategy="afterInteractive"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+          />
+        )}
+      </body>
     </html>
   );
 }

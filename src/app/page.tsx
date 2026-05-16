@@ -4,6 +4,7 @@ import { getAllArticles } from "@/lib/articles";
 import { ArticleCard, HeroCard } from "@/components/ArticleCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { AdSlot } from "@/components/AdSlot";
+import { IN_FEED_INTERVAL } from "@/lib/ads";
 
 export const dynamic = "force-dynamic";
 
@@ -69,8 +70,13 @@ export default async function Home({ searchParams }: Props) {
                   </h2>
                 </div>
                 <div className="divide-y divide-slate-100">
-                  {rest.map((article) => (
-                    <ArticleCard key={article.slug} article={article} />
+                  {rest.map((article, idx) => (
+                    <div key={article.slug}>
+                      <ArticleCard article={article} />
+                      {(idx + 1) % IN_FEED_INTERVAL === 0 && idx < rest.length - 1 && (
+                        <AdSlot slotId="home-in-feed" />
+                      )}
+                    </div>
                   ))}
                 </div>
               </section>
@@ -80,8 +86,13 @@ export default async function Home({ searchParams }: Props) {
       </div>
 
       <footer className="border-t border-slate-200 mt-12">
-        <div className="max-w-5xl mx-auto px-4 py-8 text-xs text-slate-500">
-          © {new Date().getFullYear()} MarketCast JP — 仮想通貨・金融・予測市場の独立系ニュースメディア
+        <div className="max-w-5xl mx-auto px-4 py-8 text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-2">
+          <span>© {new Date().getFullYear()} MarketCast JP</span>
+          <span className="hidden sm:inline">·</span>
+          <span>仮想通貨・金融・予測市場の独立系ニュースメディア</span>
+          <span className="ml-auto">
+            <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>
+          </span>
         </div>
       </footer>
     </main>

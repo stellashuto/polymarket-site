@@ -40,6 +40,15 @@ function sanitizeArticleHtml(html: string): string {
     .replace(/<script[\s\S]*?<\/script>/gi, "");
 }
 
+// 本文を「2番目の <h2> の直前」で分割する（記事中盤広告の挿入位置）
+function splitForMidAd(html: string): [string, string] {
+  const matches = [...html.matchAll(/<h2[\s>]/g)];
+  if (matches.length < 2) return [html, ""];
+  const idx = matches[1].index ?? -1;
+  if (idx < 0) return [html, ""];
+  return [html.slice(0, idx), html.slice(idx)];
+}
+
 function buildArticleJsonLd(article: Awaited<ReturnType<typeof getArticle>>) {
   if (!article) return null;
   const url = `${SITE_URL}/articles/${article.slug}`;
@@ -136,8 +145,27 @@ export default async function ArticlePage({ params }: Props) {
   if (!article) notFound();
 
   const sanitizedHtml = sanitizeArticleHtml(article.contentHtml);
+  const [bodyTop, bodyRest] = splitForMidAd(sanitizedHtml);
   const articleJsonLd = buildArticleJsonLd({ ...article, contentHtml: sanitizedHtml });
   const faqJsonLd = extractFaqJsonLd(sanitizedHtml);
+
+  const proseClasses = `prose prose-slate max-w-none
+    prose-headings:text-slate-900 prose-headings:font-bold
+    prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200
+    prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+    prose-p:text-slate-700 prose-p:leading-7 prose-p:my-4
+    prose-strong:text-slate-900 prose-strong:font-bold
+    prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline
+    prose-ul:text-slate-700 prose-ol:text-slate-700
+    prose-li:my-1
+    prose-table:text-sm
+    prose-th:bg-slate-50 prose-th:text-slate-900 prose-th:p-2 prose-th:border prose-th:border-slate-200
+    prose-td:p-2 prose-td:border prose-td:border-slate-200 prose-td:text-slate-700
+    prose-hr:border-slate-200
+    prose-blockquote:border-l-blue-700 prose-blockquote:text-slate-700 prose-blockquote:not-italic
+    prose-code:text-pink-700 prose-code:bg-slate-100 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+    prose-pre:bg-slate-900 prose-pre:text-slate-100
+    prose-img:hidden`;
 
   const theme = CATEGORY_THEME[article.category] ?? CATEGORY_THEME.other;
   const label = CATEGORY_LABELS[article.category] ?? theme.label;
@@ -208,25 +236,18 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         <div
-          className="prose prose-slate max-w-none
-            prose-headings:text-slate-900 prose-headings:font-bold
-            prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200
-            prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
-            prose-p:text-slate-700 prose-p:leading-7 prose-p:my-4
-            prose-strong:text-slate-900 prose-strong:font-bold
-            prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline
-            prose-ul:text-slate-700 prose-ol:text-slate-700
-            prose-li:my-1
-            prose-table:text-sm
-            prose-th:bg-slate-50 prose-th:text-slate-900 prose-th:p-2 prose-th:border prose-th:border-slate-200
-            prose-td:p-2 prose-td:border prose-td:border-slate-200 prose-td:text-slate-700
-            prose-hr:border-slate-200
-            prose-blockquote:border-l-blue-700 prose-blockquote:text-slate-700 prose-blockquote:not-italic
-            prose-code:text-pink-700 prose-code:bg-slate-100 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-slate-900 prose-pre:text-slate-100
-            prose-img:hidden"
-          dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+          className={proseClasses}
+          dangerouslySetInnerHTML={{ __html: bodyTop }}
         />
+
+        {bodyRest && <AdSlot slotId="article-mid" />}
+
+        {bodyRest && (
+          <div
+            className={proseClasses}
+            dangerouslySetInnerHTML={{ __html: bodyRest }}
+          />
+        )}
 
         <AdSlot slotId="article-bottom" />
 

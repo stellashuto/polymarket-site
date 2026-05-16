@@ -1,4 +1,5 @@
 import { AD_SLOTS, ADSENSE_CLIENT_ID, AdSlotId, pickCreative } from "@/lib/ads";
+import { AdSenseUnit } from "./AdSenseUnit";
 
 type Props = { slotId: AdSlotId };
 
@@ -55,22 +56,11 @@ export function AdSlot({ slotId }: Props) {
       )}
 
       {creative.kind === "adsense" && ADSENSE_CLIENT_ID && (
-        <>
-          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-          <ins
-            className="adsbygoogle block"
-            style={{ display: "block" }}
-            data-ad-client={ADSENSE_CLIENT_ID}
-            data-ad-slot={creative.slot}
-            data-ad-format={creative.format ?? "auto"}
-            data-full-width-responsive="true"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
-            }}
-          />
-        </>
+        <AdSenseUnit
+          client={ADSENSE_CLIENT_ID}
+          slot={creative.slot}
+          format={creative.format ?? "auto"}
+        />
       )}
 
       {creative.kind === "custom-html" && (
