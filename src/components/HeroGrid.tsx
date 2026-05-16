@@ -22,7 +22,7 @@ export function MainHero({ a }: { a: ArticleMeta }) {
   const date = a.date ? format(new Date(a.date), "yyyy.MM.dd HH:mm") : "";
   return (
     <Link href={`/articles/${a.slug}`} className="group block h-full">
-      <div className={`relative aspect-[16/10] md:aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br ${gradient(a.category)}`}>
+      <div className={`relative aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px] rounded-xl overflow-hidden bg-gradient-to-br ${gradient(a.category)}`}>
         {a.thumbnail ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

@@ -84,10 +84,14 @@ export default async function Home({ searchParams }: Props) {
                   <div className="lg:col-span-7">
                     <MainHero a={hero} />
                   </div>
-                  {/* サブヒーロー (中央・中) */}
+                  {/* サブヒーロー＋広告 (中央・中) */}
                   <div className="lg:col-span-3 flex flex-col gap-4">
                     {sub1 && <SubHero a={sub1} />}
                     {sub2 && <SubHero a={sub2} />}
+                    {/* 残り高さを広告で埋める（PCで上下バランス、モバイルでは縦並びの自然な位置） */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <AdSlot slotId="home-after-hero" />
+                    </div>
                   </div>
                   {/* ランキング (右) */}
                   <div className="lg:col-span-2">
@@ -96,8 +100,6 @@ export default async function Home({ searchParams }: Props) {
                 </div>
               </section>
             )}
-
-            <AdSlot slotId="home-after-hero" />
 
             {/* 最新記事リスト */}
             {rest.length > 0 && (
