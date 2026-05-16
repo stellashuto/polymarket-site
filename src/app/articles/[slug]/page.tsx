@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { ShareButtons } from "@/components/ShareButtons";
 import { PolymarketDisclaimer } from "@/components/PolymarketDisclaimer";
+import { OddsChart } from "@/components/OddsChart";
 import { readingTime } from "@/lib/reading-time";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
@@ -255,6 +256,11 @@ export default async function ArticlePage({ params }: Props) {
         {/* Polymarket予測市場の記事には法的注意書きを表示 */}
         {article.type === "market" && <PolymarketDisclaimer />}
 
+        {/* オッズ推移チャート（履歴データがあれば） */}
+        {article.type === "market" && article.odds_history.length > 0 && (
+          <OddsChart series={article.odds_history} />
+        )}
+
         <div
           className={proseClasses}
           dangerouslySetInnerHTML={{ __html: bodyTop }}
@@ -286,6 +292,23 @@ export default async function ArticlePage({ params }: Props) {
             >
               {article.source} — 原文を読む ↗
             </a>
+          </div>
+        )}
+
+        {article.type === "market" && article.polymarket_url && (
+          <div className="mt-10 pt-5 border-t border-slate-200">
+            <div className="text-xs text-slate-500 mb-1">データソース</div>
+            <a
+              href={article.polymarket_url}
+              target="_blank"
+              rel="noopener nofollow"
+              className="text-blue-700 hover:underline text-sm font-medium break-all"
+            >
+              Polymarket 公式マーケットページ ↗
+            </a>
+            <p className="text-xs text-slate-500 mt-1">
+              ※当サイトは Polymarket の運営とは無関係です。日本居住者は本サービスを利用できません。
+            </p>
           </div>
         )}
 

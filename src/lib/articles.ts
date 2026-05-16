@@ -6,6 +6,40 @@ import remarkHtml from "remark-html";
 
 const ARTICLES_DIR = path.join(process.cwd(), "content/articles");
 
+function parseOddsHistory(raw: unknown): OddsSeries[] {
+  if (!Array.isArray(raw)) return [];
+  const out: OddsSeries[] = [];
+  for (const item of raw) {
+    if (typeof item !== "object" || item === null) continue;
+    const obj = item as { outcome?: unknown; history?: unknown };
+    const outcome = typeof obj.outcome === "string" ? obj.outcome : "";
+    let history: [number, number][] = [];
+    if (typeof obj.history === "string") {
+      try {
+        const parsed = JSON.parse(obj.history);
+        if (Array.isArray(parsed)) {
+          history = parsed
+            .filter((p) => Array.isArray(p) && p.length === 2)
+            .map((p) => [Number(p[0]), Number(p[1])] as [number, number]);
+        }
+      } catch {
+        // ignore
+      }
+    } else if (Array.isArray(obj.history)) {
+      history = (obj.history as unknown[])
+        .filter((p): p is unknown[] => Array.isArray(p) && p.length === 2)
+        .map((p) => [Number(p[0]), Number(p[1])] as [number, number]);
+    }
+    if (outcome && history.length > 0) out.push({ outcome, history });
+  }
+  return out;
+}
+
+export type OddsSeries = {
+  outcome: string;
+  history: [number, number][];
+};
+
 export type ArticleMeta = {
   slug: string;
   title: string;
@@ -18,6 +52,8 @@ export type ArticleMeta = {
   type: "news" | "market";
   source: string;
   source_url: string;
+  polymarket_url: string;
+  odds_history: OddsSeries[];
 };
 
 export type Article = ArticleMeta & {
@@ -46,6 +82,8 @@ export function getAllArticles(): ArticleMeta[] {
       type: (data.type as "news" | "market") ?? "market",
       source: data.source ?? "",
       source_url: data.source_url ?? "",
+      polymarket_url: data.polymarket_url ?? "",
+      odds_history: parseOddsHistory(data.odds_history),
     } satisfies ArticleMeta;
   });
 
@@ -75,6 +113,8 @@ export async function getArticle(slug: string): Promise<Article | null> {
     type: (data.type as "news" | "market") ?? "market",
     source: data.source ?? "",
     source_url: data.source_url ?? "",
+    polymarket_url: data.polymarket_url ?? "",
+    odds_history: parseOddsHistory(data.odds_history),
     contentHtml: processed.toString(),
   };
 }
