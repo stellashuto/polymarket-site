@@ -8,6 +8,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { ShareButtons } from "@/components/ShareButtons";
+import { PolymarketDisclaimer } from "@/components/PolymarketDisclaimer";
 import { readingTime } from "@/lib/reading-time";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
@@ -253,6 +254,9 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         <ShareButtons title={article.title} url={articleUrl} />
+
+        {/* Polymarket予測市場の記事には法的注意書きを表示 */}
+        {article.type === "market" && <PolymarketDisclaimer />}
 
         <div
           className={proseClasses}
