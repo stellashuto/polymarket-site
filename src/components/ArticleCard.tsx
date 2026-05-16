@@ -58,7 +58,17 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
       <div
         className={`relative shrink-0 w-32 h-24 md:w-40 md:h-28 rounded-lg overflow-hidden bg-gradient-to-br ${theme.thumb}`}
       >
-        <span className="absolute bottom-2 left-2 text-white/90 text-[10px] font-bold tracking-wider uppercase">
+        {article.thumbnail ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`/thumbnails/${article.thumbnail}`}
+            alt={article.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <span className="absolute bottom-1.5 left-2 text-white text-[10px] font-bold tracking-wider uppercase drop-shadow-sm">
           {label}
         </span>
       </div>
@@ -102,7 +112,15 @@ export function HeroCard({ article }: { article: ArticleMeta }) {
       <div
         className={`relative aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-br ${theme.thumb} flex items-end`}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        {article.thumbnail ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`/thumbnails/${article.thumbnail}`}
+            alt={article.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="relative p-6 md:p-8 z-10 w-full">
           <span className="inline-block bg-white text-slate-900 text-xs font-bold px-2 py-1 rounded-sm mb-3">
             {label}

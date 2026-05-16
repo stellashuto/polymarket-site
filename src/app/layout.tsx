@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "Polymarket Watch";
-const SITE_DESC = "Polymarketの予測市場データと仮想通貨ニュースを組み合わせて、日本語で市況・トレンドを解説する独立系メディア。";
+const SITE_NAME = "MarketCast JP";
+const SITE_DESC = "仮想通貨ニュース・金融ニュース・予測市場データを日本語で配信する独立系メディア。Polymarketのオッズと市場ニュースから、市況・トレンドを解説します。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — 予測市場・仮想通貨ニュース解説メディア`,
+    default: `${SITE_NAME} — 仮想通貨・金融・予測市場ニュース`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESC,

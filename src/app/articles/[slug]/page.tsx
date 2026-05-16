@@ -7,7 +7,7 @@ import { CATEGORY_LABELS } from "@/lib/categories";
 import { AdSlot } from "@/components/AdSlot";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "Polymarket Watch";
+const SITE_NAME = "MarketCast JP";
 
 const CATEGORY_THEME: Record<string, { badge: string; label: string }> = {
   politics: { badge: "bg-blue-50 text-blue-700", label: "政治" },
@@ -94,6 +94,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!article) return {};
   const description = buildDescription(article.contentHtml);
   const url = `${SITE_URL}/articles/${article.slug}`;
+  const ogImage = article.thumbnail
+    ? `${SITE_URL}/thumbnails/${article.thumbnail}`
+    : undefined;
   return {
     title: article.title,
     description,
@@ -105,11 +108,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       publishedTime: article.date,
       tags: [CATEGORY_LABELS[article.category] ?? article.category],
+      ...(ogImage ? { images: [{ url: ogImage, width: 1280, height: 720 }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description,
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }
@@ -144,12 +149,15 @@ export default async function ArticlePage({ params }: Props) {
       )}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-4">
-          <Link href="/" className="flex items-baseline gap-2">
+          <Link href="/" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">
-              Polymarket
+              Market
             </span>
-            <span className="text-slate-900 font-bold text-lg tracking-tight">
-              Watch
+            <span className="text-slate-900 font-black text-lg tracking-tight">
+              Cast
+            </span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">
+              JP
             </span>
           </Link>
           <Link
@@ -172,9 +180,20 @@ export default async function ArticlePage({ params }: Props) {
           <span className="text-slate-500 text-xs">{dateStr}</span>
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-8">
+        <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-6">
           {article.title}
         </h1>
+
+        {article.thumbnail && (
+          <div className="aspect-[16/9] rounded-xl overflow-hidden mb-8 bg-slate-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/thumbnails/${article.thumbnail}`}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
 
         <div
           className="prose prose-slate max-w-none

@@ -14,6 +14,7 @@ export type ArticleMeta = {
   volume_usd: number;
   condition_id: string;
   chart_image: string;
+  thumbnail: string;
   type: "news" | "market";
   source: string;
   source_url: string;
@@ -41,6 +42,7 @@ export function getAllArticles(): ArticleMeta[] {
       volume_usd: Number(data.volume_usd ?? 0),
       condition_id: data.condition_id ?? "",
       chart_image: data.chart_image ?? "",
+      thumbnail: data.thumbnail ?? "",
       type: (data.type as "news" | "market") ?? "market",
       source: data.source ?? "",
       source_url: data.source_url ?? "",
@@ -69,6 +71,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
     volume_usd: Number(data.volume_usd ?? 0),
     condition_id: data.condition_id ?? "",
     chart_image: data.chart_image ?? "",
+    thumbnail: data.thumbnail ?? "",
     type: (data.type as "news" | "market") ?? "market",
     source: data.source ?? "",
     source_url: data.source_url ?? "",

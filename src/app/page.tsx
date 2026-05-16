@@ -25,12 +25,15 @@ export default async function Home({ searchParams }: Props) {
     <main className="min-h-screen bg-white text-slate-900">
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-baseline gap-2">
+          <Link href="/" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">
-              Polymarket
+              Market
             </span>
-            <span className="text-slate-900 font-bold text-lg tracking-tight">
-              Watch
+            <span className="text-slate-900 font-black text-lg tracking-tight">
+              Cast
+            </span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">
+              JP
             </span>
           </Link>
           <span className="text-slate-500 text-xs">{all.length} 記事</span>
@@ -78,7 +81,7 @@ export default async function Home({ searchParams }: Props) {
 
       <footer className="border-t border-slate-200 mt-12">
         <div className="max-w-5xl mx-auto px-4 py-8 text-xs text-slate-500">
-          © {new Date().getFullYear()} Polymarket Watch — 仮想通貨ニュース・金融ニュース・予測市場の情報メディア
+          © {new Date().getFullYear()} MarketCast JP — 仮想通貨・金融・予測市場の独立系ニュースメディア
         </div>
       </footer>
     </main>
