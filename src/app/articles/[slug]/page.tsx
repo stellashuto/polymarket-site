@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { format } from "date-fns";
 import { getArticle, getAllArticles } from "@/lib/articles";
 import { CATEGORY_LABELS } from "@/lib/categories";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
+const SITE_NAME = "Polymarket Watch";
 
 const CATEGORY_THEME: Record<string, { badge: string; label: string }> = {
   politics: { badge: "bg-blue-50 text-blue-700", label: "政治" },
@@ -19,10 +23,103 @@ export async function generateStaticParams() {
 
 type Props = { params: Promise<{ slug: string }> };
 
+function buildDescription(html: string, max = 160): string {
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return text.length > max ? text.slice(0, max - 1) + "…" : text;
+}
+
+function buildArticleJsonLd(article: Awaited<ReturnType<typeof getArticle>>) {
+  if (!article) return null;
+  const url = `${SITE_URL}/articles/${article.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: "ja",
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    articleSection: CATEGORY_LABELS[article.category] ?? "その他",
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    description: buildDescription(article.contentHtml),
+    ...(article.source_url
+      ? {
+          citation: {
+            "@type": "CreativeWork",
+            name: article.source,
+            url: article.source_url,
+          },
+        }
+      : {}),
+  };
+}
+
+// 記事中の `<h3>Qx ...</h3><p>Ax ...</p>` 形式を拾ってFAQPage JSON-LDを組み立てる
+function extractFaqJsonLd(html: string) {
+  const items: { q: string; a: string }[] = [];
+  // 「質問」「Q.」「Q1.」のように始まるh3〜h4を拾う
+  const blockRe = /<h[34][^>]*>([^<]*?)<\/h[34]>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+  let m: RegExpExecArray | null;
+  while ((m = blockRe.exec(html)) !== null) {
+    const headline = m[1].trim();
+    if (/^(Q\d*\.?|質問|FAQ|よくある質問)/i.test(headline)) {
+      items.push({
+        q: headline.replace(/^Q\d*\.\s*/i, "").replace(/^質問[:：]\s*/, ""),
+        a: m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
+      });
+    }
+  }
+  if (items.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getArticle(slug);
+  if (!article) return {};
+  const description = buildDescription(article.contentHtml);
+  const url = `${SITE_URL}/articles/${article.slug}`;
+  return {
+    title: article.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description,
+      publishedTime: article.date,
+      tags: [CATEGORY_LABELS[article.category] ?? article.category],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+    },
+  };
+}
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticle(slug);
   if (!article) notFound();
+
+  const articleJsonLd = buildArticleJsonLd(article);
+  const faqJsonLd = extractFaqJsonLd(article.contentHtml);
 
   const theme = CATEGORY_THEME[article.category] ?? CATEGORY_THEME.other;
   const label = CATEGORY_LABELS[article.category] ?? theme.label;
@@ -32,6 +129,18 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      {articleJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-4">
           <Link href="/" className="flex items-baseline gap-2">
