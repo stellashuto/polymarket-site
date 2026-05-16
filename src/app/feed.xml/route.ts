@@ -1,7 +1,7 @@
 import { getAllArticles } from "@/lib/articles";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "MarketCast JP";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
+const SITE_NAME = "CryptoBrief";
 const SITE_DESC = "仮想通貨ニュース・金融ニュース・予測市場データを日本語で配信する独立系メディア。";
 
 function esc(s: string): string {

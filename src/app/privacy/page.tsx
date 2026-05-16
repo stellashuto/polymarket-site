@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
-  description: "MarketCast JP のプライバシーポリシー。Google AdSense等の第三者広告配信、アクセス解析、アフィリエイトに関する説明。",
+  description: "CryptoBrief のプライバシーポリシー。Google AdSense等の第三者広告配信、アクセス解析、アフィリエイトに関する説明。",
 };
 
 export default function PrivacyPage() {
@@ -12,9 +12,8 @@ export default function PrivacyPage() {
       <header className="border-b border-slate-200 bg-white">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-4">
           <Link href="/" className="flex items-baseline gap-1.5">
-            <span className="text-blue-700 font-black text-lg tracking-tight">Market</span>
-            <span className="text-slate-900 font-black text-lg tracking-tight">Cast</span>
-            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
+            <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
+            <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
           </Link>
         </div>
       </header>
@@ -26,7 +25,7 @@ export default function PrivacyPage() {
         prose-p:text-slate-700 prose-p:leading-7
         prose-a:text-blue-700">
         <h1>プライバシーポリシー</h1>
-        <p>MarketCast JP（以下「当サイト」）は、利用者の個人情報の保護を重要視し、以下の方針に基づいて取り扱います。</p>
+        <p>CryptoBrief（以下「当サイト」）は、利用者の個人情報の保護を重要視し、以下の方針に基づいて取り扱います。</p>
 
         <h2>1. 第三者配信の広告サービスについて</h2>
         <p>当サイトでは、Google が提供する広告配信サービス「Google AdSense」を利用しています。Google を含む第三者配信事業者は、Cookie を使用して、利用者がそのウェブサイトや他のウェブサイトに過去にアクセスした際の情報に基づいて広告を配信することがあります。</p>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "MarketCast JP";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
+const SITE_NAME = "CryptoBrief";
 
 export const metadata: Metadata = {
   title: "運営者情報 / 編集方針",
@@ -40,9 +40,8 @@ export default function AboutPage() {
       <header className="border-b border-slate-200 bg-white">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-4">
           <Link href="/" className="flex items-baseline gap-1.5">
-            <span className="text-blue-700 font-black text-lg tracking-tight">Market</span>
-            <span className="text-slate-900 font-black text-lg tracking-tight">Cast</span>
-            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
+            <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
+            <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
           </Link>
         </div>
       </header>
@@ -58,7 +57,7 @@ export default function AboutPage() {
 
         <h1>運営者情報 / 編集方針</h1>
 
-        <p>MarketCast JP（マーケットキャスト ジェイピー）は、仮想通貨・金融・予測市場の3領域を横断する日本語のオンラインメディアです。Polymarket等の予測市場データと、国内外の信頼できるニュースソースを組み合わせ、投資家・トレーダー向けに市況解説を配信しています。</p>
+        <p>CryptoBrief（クリプトブリーフ）は、仮想通貨・金融・予測市場の3領域を横断する日本語のオンラインメディアです。Polymarket等の予測市場データと、国内外の信頼できるニュースソースを組み合わせ、投資家・トレーダー向けに市況解説を配信しています。</p>
 
         <h2>サイトの目的</h2>
         <p>急速に発展する暗号資産・予測市場・金融市場の動向を、日本語で正確かつ迅速に届けることを目的としています。一次データに基づいた解説に重点を置き、推測や煽りを避け、読者が自ら判断する材料となる情報提供を心がけています。</p>

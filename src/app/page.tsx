@@ -39,13 +39,10 @@ export default async function Home({ searchParams }: Props) {
         <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
           <Link href="/" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">
-              Market
+              Crypto
             </span>
             <span className="text-slate-900 font-black text-lg tracking-tight">
-              Cast
-            </span>
-            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">
-              JP
+              Brief
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -141,9 +138,8 @@ export default async function Home({ searchParams }: Props) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm mb-8">
             <div>
               <div className="flex items-baseline gap-1.5 mb-3">
-                <span className="text-blue-700 font-black tracking-tight">Market</span>
-                <span className="text-slate-900 font-black tracking-tight">Cast</span>
-                <span className="text-slate-400 font-bold text-[10px] tracking-wider">JP</span>
+                <span className="text-blue-700 font-black tracking-tight">Crypto</span>
+                <span className="text-slate-900 font-black tracking-tight">Brief</span>
               </div>
               <p className="text-slate-600 text-xs leading-relaxed">
                 仮想通貨・金融・予測市場の<br/>独立系ニュースメディア
@@ -178,7 +174,7 @@ export default async function Home({ searchParams }: Props) {
             </div>
           </div>
           <div className="pt-6 border-t border-slate-200 text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
-            <span>© {new Date().getFullYear()} MarketCast JP</span>
+            <span>© {new Date().getFullYear()} CryptoBrief</span>
             <span className="hidden sm:inline">·</span>
             <span>本サイトはアフィリエイトプログラムに参加しています</span>
           </div>

@@ -17,15 +17,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "MarketCast JP";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
+const SITE_NAME = "CryptoBrief";
 const SITE_DESC = "仮想通貨ニュース・金融ニュース・予測市場データを日本語で配信する独立系メディア。Polymarketのオッズと市場ニュースから、市況・トレンドを解説します。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — 仮想通貨・金融・予測市場ニュース`,
-    template: `%s | ${SITE_NAME}`,
+    default: `CryptoBrief — 仮想通貨・金融・予測市場のニュースを日本語で簡潔に`,
+    template: `%s | CryptoBrief`,
   },
   description: SITE_DESC,
   keywords: [

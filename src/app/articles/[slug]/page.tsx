@@ -11,8 +11,8 @@ import { ShareButtons } from "@/components/ShareButtons";
 import { PolymarketDisclaimer } from "@/components/PolymarketDisclaimer";
 import { readingTime } from "@/lib/reading-time";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
-const SITE_NAME = "MarketCast JP";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
+const SITE_NAME = "CryptoBrief";
 
 const CATEGORY_THEME: Record<string, { badge: string; label: string }> = {
   politics: { badge: "bg-blue-50 text-blue-700", label: "政治" },
@@ -199,13 +199,10 @@ export default async function ArticlePage({ params }: Props) {
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-4">
           <Link href="/" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">
-              Market
+              Crypto
             </span>
             <span className="text-slate-900 font-black text-lg tracking-tight">
-              Cast
-            </span>
-            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">
-              JP
+              Brief
             </span>
           </Link>
           <Link
