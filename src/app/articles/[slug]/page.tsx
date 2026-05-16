@@ -29,6 +29,17 @@ function buildDescription(html: string, max = 160): string {
   return text.length > max ? text.slice(0, max - 1) + "…" : text;
 }
 
+// 本文HTMLから生のJSON-LDコードブロックや<script>タグを除去
+function sanitizeArticleHtml(html: string): string {
+  return html
+    // <pre><code class="language-json...">…</code></pre> を丸ごと削除
+    .replace(/<pre[^>]*>\s*<code[^>]*language-json[^"]*"[^>]*>[\s\S]*?<\/code>\s*<\/pre>/gi, "")
+    // それ以外でも @context や FAQPage を含むpreブロックは構造化データの可能性が高いので削除
+    .replace(/<pre[^>]*>[\s\S]*?@context[\s\S]*?<\/pre>/gi, "")
+    // 本文中に紛れ込んだ <script> タグも安全のため削除
+    .replace(/<script[\s\S]*?<\/script>/gi, "");
+}
+
 function buildArticleJsonLd(article: Awaited<ReturnType<typeof getArticle>>) {
   if (!article) return null;
   const url = `${SITE_URL}/articles/${article.slug}`;
@@ -124,8 +135,9 @@ export default async function ArticlePage({ params }: Props) {
   const article = await getArticle(slug);
   if (!article) notFound();
 
-  const articleJsonLd = buildArticleJsonLd(article);
-  const faqJsonLd = extractFaqJsonLd(article.contentHtml);
+  const sanitizedHtml = sanitizeArticleHtml(article.contentHtml);
+  const articleJsonLd = buildArticleJsonLd({ ...article, contentHtml: sanitizedHtml });
+  const faqJsonLd = extractFaqJsonLd(sanitizedHtml);
 
   const theme = CATEGORY_THEME[article.category] ?? CATEGORY_THEME.other;
   const label = CATEGORY_LABELS[article.category] ?? theme.label;
@@ -213,12 +225,26 @@ export default async function ArticlePage({ params }: Props) {
             prose-code:text-pink-700 prose-code:bg-slate-100 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
             prose-pre:bg-slate-900 prose-pre:text-slate-100
             prose-img:hidden"
-          dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+          dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
         />
 
         <AdSlot slotId="article-bottom" />
 
-        <div className="mt-12 pt-6 border-t border-slate-200 text-xs text-slate-500">
+        {article.type === "news" && article.source_url && (
+          <div className="mt-10 pt-5 border-t border-slate-200">
+            <div className="text-xs text-slate-500 mb-1">出典</div>
+            <a
+              href={article.source_url}
+              target="_blank"
+              rel="noopener nofollow"
+              className="text-blue-700 hover:underline text-sm font-medium break-all"
+            >
+              {article.source} — 原文を読む ↗
+            </a>
+          </div>
+        )}
+
+        <div className="mt-10 pt-5 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
           ※本記事は予測市場・公開ニュース等の情報に基づいて作成された解説記事です。投資判断は自己責任でお願いします。当サイトはアフィリエイトプログラムに参加しており、記事内のリンクから取引所等に登録された場合、当サイトに紹介料が支払われることがあります。
         </div>
       </article>

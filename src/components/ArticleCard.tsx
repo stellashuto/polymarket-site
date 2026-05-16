@@ -86,9 +86,6 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
                 予測市場
               </span>
             )}
-            {article.type === "news" && article.source && (
-              <span className="text-slate-500 text-[11px]">{article.source}</span>
-            )}
             <span className="text-slate-400 text-xs ml-auto">{dateStr}</span>
           </div>
           <h2 className="text-slate-900 font-bold text-base md:text-lg leading-snug line-clamp-2 group-hover:text-blue-700 transition-colors">
