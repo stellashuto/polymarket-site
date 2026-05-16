@@ -5,6 +5,10 @@ import { format } from "date-fns";
 import { getArticle, getAllArticles } from "@/lib/articles";
 import { CATEGORY_LABELS } from "@/lib/categories";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedArticles } from "@/components/RelatedArticles";
+import { ShareButtons } from "@/components/ShareButtons";
+import { readingTime } from "@/lib/reading-time";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://polymarket-site-ochre.vercel.app";
 const SITE_NAME = "MarketCast JP";
@@ -148,6 +152,9 @@ export default async function ArticlePage({ params }: Props) {
   const [bodyTop, bodyRest] = splitForMidAd(sanitizedHtml);
   const articleJsonLd = buildArticleJsonLd({ ...article, contentHtml: sanitizedHtml });
   const faqJsonLd = extractFaqJsonLd(sanitizedHtml);
+  const minutes = readingTime(sanitizedHtml);
+  const allArticles = getAllArticles();
+  const articleUrl = `${SITE_URL}/articles/${article.slug}`;
 
   const proseClasses = `prose prose-slate max-w-none
     prose-headings:text-slate-900 prose-headings:font-bold
@@ -209,8 +216,16 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </header>
 
-      <article className="max-w-3xl mx-auto px-4 py-8 md:py-12">
-        <div className="flex items-center gap-3 mb-4">
+      <article className="max-w-3xl mx-auto px-4 py-6 md:py-10">
+        <Breadcrumbs
+          items={[
+            { label: "ホーム", href: "/" },
+            { label: label, href: `/?category=${article.category}` },
+            { label: article.title.length > 30 ? article.title.slice(0, 30) + "…" : article.title },
+          ]}
+        />
+
+        <div className="flex flex-wrap items-center gap-3 mb-4">
           <Link
             href={`/?category=${article.category}`}
             className={`${theme.badge} text-xs font-bold px-2.5 py-1 rounded-sm hover:opacity-80 transition-opacity`}
@@ -218,6 +233,8 @@ export default async function ArticlePage({ params }: Props) {
             {label}
           </Link>
           <span className="text-slate-500 text-xs">{dateStr}</span>
+          <span className="text-slate-400 text-xs">·</span>
+          <span className="text-slate-500 text-xs">{minutes}分で読めます</span>
         </div>
 
         <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-6">
@@ -225,7 +242,7 @@ export default async function ArticlePage({ params }: Props) {
         </h1>
 
         {article.thumbnail && (
-          <div className="aspect-[16/9] rounded-xl overflow-hidden mb-8 bg-slate-100">
+          <div className="aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-slate-100">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`/thumbnails/${article.thumbnail}`}
@@ -234,6 +251,8 @@ export default async function ArticlePage({ params }: Props) {
             />
           </div>
         )}
+
+        <ShareButtons title={article.title} url={articleUrl} />
 
         <div
           className={proseClasses}
@@ -250,6 +269,10 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         <AdSlot slotId="article-bottom" />
+
+        <ShareButtons title={article.title} url={articleUrl} />
+
+        <RelatedArticles current={article} all={allArticles} max={4} />
 
         {article.type === "news" && article.source_url && (
           <div className="mt-10 pt-5 border-t border-slate-200">

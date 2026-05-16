@@ -4,7 +4,9 @@ import { getAllArticles } from "@/lib/articles";
 import { ArticleCard, HeroCard } from "@/components/ArticleCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { IN_FEED_INTERVAL } from "@/lib/ads";
+import { CATEGORY_LABELS } from "@/lib/categories";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +49,14 @@ export default async function Home({ searchParams }: Props) {
       </header>
 
       <div className="max-w-5xl mx-auto px-4 py-6 md:py-8">
+        {current !== "all" && (
+          <Breadcrumbs
+            items={[
+              { label: "ホーム", href: "/" },
+              { label: CATEGORY_LABELS[current] ?? current },
+            ]}
+          />
+        )}
         {articles.length === 0 ? (
           <div className="text-center text-slate-500 py-24">
             記事がありません
@@ -85,14 +95,52 @@ export default async function Home({ searchParams }: Props) {
         )}
       </div>
 
-      <footer className="border-t border-slate-200 mt-12">
-        <div className="max-w-5xl mx-auto px-4 py-8 text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-2">
-          <span>© {new Date().getFullYear()} MarketCast JP</span>
-          <span className="hidden sm:inline">·</span>
-          <span>仮想通貨・金融・予測市場の独立系ニュースメディア</span>
-          <span className="ml-auto">
-            <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>
-          </span>
+      <footer className="border-t border-slate-200 mt-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm mb-8">
+            <div>
+              <div className="flex items-baseline gap-1.5 mb-3">
+                <span className="text-blue-700 font-black tracking-tight">Market</span>
+                <span className="text-slate-900 font-black tracking-tight">Cast</span>
+                <span className="text-slate-400 font-bold text-[10px] tracking-wider">JP</span>
+              </div>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                仮想通貨・金融・予測市場の<br/>独立系ニュースメディア
+              </p>
+            </div>
+            <div>
+              <h3 className="text-slate-900 font-bold text-xs mb-2 uppercase tracking-wider">サイト</h3>
+              <ul className="space-y-1.5 text-slate-600">
+                <li><Link href="/" className="hover:text-blue-700">ホーム</Link></li>
+                <li><Link href="/about" className="hover:text-blue-700">運営者情報</Link></li>
+                <li><Link href="/privacy" className="hover:text-blue-700">プライバシーポリシー</Link></li>
+                <li><Link href="/feed.xml" className="hover:text-blue-700">RSS</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-slate-900 font-bold text-xs mb-2 uppercase tracking-wider">カテゴリ</h3>
+              <ul className="space-y-1.5 text-slate-600">
+                <li><Link href="/?category=crypto" className="hover:text-blue-700">暗号資産</Link></li>
+                <li><Link href="/?category=economics" className="hover:text-blue-700">経済</Link></li>
+                <li><Link href="/?category=politics" className="hover:text-blue-700">政治</Link></li>
+                <li><Link href="/?category=sports" className="hover:text-blue-700">スポーツ</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-slate-900 font-bold text-xs mb-2 uppercase tracking-wider">情報ソース</h3>
+              <ul className="space-y-1.5 text-slate-600 text-xs">
+                <li>Polymarket</li>
+                <li>CoinPost</li>
+                <li>CoinDesk JAPAN</li>
+                <li>Crypto Times</li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-6 border-t border-slate-200 text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>© {new Date().getFullYear()} MarketCast JP</span>
+            <span className="hidden sm:inline">·</span>
+            <span>本サイトはアフィリエイトプログラムに参加しています</span>
+          </div>
         </div>
       </footer>
     </main>
