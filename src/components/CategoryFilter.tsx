@@ -1,11 +1,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { CATEGORY_LABELS } from "@/lib/categories";
+import { categoryLabel, type Locale } from "@/lib/i18n";
 
 const CATEGORIES = ["all", "crypto", "economics", "politics", "sports", "entertainment", "other"];
 
-export function CategoryFilter({ current }: { current: string }) {
+type Props = { current: string; locale?: Locale };
+
+export function CategoryFilter({ current, locale = "ja" }: Props) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -13,7 +15,9 @@ export function CategoryFilter({ current }: { current: string }) {
     const next = new URLSearchParams(params.toString());
     if (cat === "all") next.delete("category");
     else next.set("category", cat);
-    router.push(`/?${next.toString()}`);
+    const base = locale === "en" ? "/en" : "/";
+    const qs = next.toString();
+    router.push(qs ? `${base}?${qs}` : base);
   }
 
   return (
@@ -30,7 +34,7 @@ export function CategoryFilter({ current }: { current: string }) {
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            {CATEGORY_LABELS[cat]}
+            {categoryLabel(locale, cat)}
             {active && (
               <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-700" />
             )}

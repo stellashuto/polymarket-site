@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArticleMeta } from "@/lib/articles";
-import { CATEGORY_LABELS } from "@/lib/categories";
+import { ArticleMeta, localeTitle } from "@/lib/articles";
+import { categoryLabel, t, type Locale } from "@/lib/i18n";
 
-type Props = { articles: ArticleMeta[]; limit?: number };
+type Props = { articles: ArticleMeta[]; limit?: number; locale?: Locale };
 
 const CATEGORY_BADGE: Record<string, string> = {
   politics: "bg-blue-50 text-blue-700",
@@ -28,15 +28,19 @@ function scoreArticle(a: ArticleMeta): number {
   return freshness + volumeBoost;
 }
 
-export function PopularRanking({ articles, limit = 8 }: Props) {
+export function PopularRanking({ articles, limit = 8, locale = "ja" }: Props) {
+  const d = t(locale);
   const ranked = [...articles].sort((a, b) => scoreArticle(b) - scoreArticle(a)).slice(0, limit);
   if (ranked.length === 0) return null;
+
+  const articleHref = (slug: string) => locale === "en" ? `/en/articles/${slug}` : `/articles/${slug}`;
+  const homeHref = locale === "en" ? "/en" : "/";
 
   return (
     <aside className="border border-slate-200 rounded-lg overflow-hidden bg-white">
       <header className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200 bg-slate-50">
-        <h2 className="text-slate-900 font-bold text-sm">人気記事ランキング</h2>
-        <Link href="/" className="text-blue-700 text-xs hover:underline">一覧 ›</Link>
+        <h2 className="text-slate-900 font-bold text-sm">{d.popular_ranking}</h2>
+        <Link href={homeHref} className="text-blue-700 text-xs hover:underline">{d.view_all}</Link>
       </header>
       <ol className="divide-y divide-slate-100">
         {ranked.map((a, i) => {
@@ -46,7 +50,7 @@ export function PopularRanking({ articles, limit = 8 }: Props) {
           return (
             <li key={a.slug}>
               <Link
-                href={`/articles/${a.slug}`}
+                href={articleHref(a.slug)}
                 className="flex items-start gap-3 px-3 py-2.5 hover:bg-slate-50 transition-colors"
               >
                 <span
@@ -61,11 +65,11 @@ export function PopularRanking({ articles, limit = 8 }: Props) {
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5 mb-0.5">
                     <span className={`${badge} text-[10px] font-medium px-1.5 py-0.5 rounded-sm`}>
-                      {CATEGORY_LABELS[a.category] ?? a.category}
+                      {categoryLabel(locale, a.category)}
                     </span>
                   </div>
                   <p className="text-slate-900 text-[13px] font-semibold leading-snug line-clamp-3">
-                    {a.title}
+                    {localeTitle(a, locale)}
                   </p>
                 </div>
               </Link>

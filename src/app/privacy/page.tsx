@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -15,6 +16,9 @@ export default function PrivacyPage() {
             <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
             <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
           </Link>
+          <div className="ml-auto">
+            <LanguageToggle current="ja" />
+          </div>
         </div>
       </header>
 

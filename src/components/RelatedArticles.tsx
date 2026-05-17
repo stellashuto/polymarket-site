@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import { ArticleMeta } from "@/lib/articles";
-import { CATEGORY_LABELS } from "@/lib/categories";
+import { ArticleMeta, localeTitle } from "@/lib/articles";
+import { categoryLabel, t, type Locale } from "@/lib/i18n";
 
 type Props = {
   current: ArticleMeta;
   all: ArticleMeta[];
   max?: number;
+  locale?: Locale;
 };
 
 const CATEGORY_BADGE: Record<string, string> = {
@@ -18,8 +19,8 @@ const CATEGORY_BADGE: Record<string, string> = {
   other: "bg-slate-100 text-slate-700",
 };
 
-export function RelatedArticles({ current, all, max = 4 }: Props) {
-  // 同カテゴリ優先 → 残り枠は他カテゴリの新着で埋める
+export function RelatedArticles({ current, all, max = 4, locale = "ja" }: Props) {
+  const d = t(locale);
   const sameCategory = all.filter(
     (a) => a.slug !== current.slug && a.category === current.category,
   );
@@ -30,12 +31,15 @@ export function RelatedArticles({ current, all, max = 4 }: Props) {
 
   if (picks.length === 0) return null;
 
+  const articleHref = (slug: string) =>
+    locale === "en" ? `/en/articles/${slug}` : `/articles/${slug}`;
+
   return (
     <section className="mt-12 pt-8 border-t border-slate-200 not-prose">
       <div className="flex items-center gap-3 mb-4">
         <span className="block w-1 h-5 bg-blue-700 rounded-sm" />
         <h2 className="text-slate-900 font-bold text-base md:text-lg">
-          関連記事
+          {d.related_articles}
         </h2>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -45,7 +49,7 @@ export function RelatedArticles({ current, all, max = 4 }: Props) {
           return (
             <li key={a.slug}>
               <Link
-                href={`/articles/${a.slug}`}
+                href={articleHref(a.slug)}
                 className="flex gap-3 items-start p-3 rounded-lg hover:bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors"
               >
                 {a.thumbnail ? (
@@ -62,12 +66,12 @@ export function RelatedArticles({ current, all, max = 4 }: Props) {
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`${badge} text-[10px] font-medium px-1.5 py-0.5 rounded-sm`}>
-                      {CATEGORY_LABELS[a.category] ?? a.category}
+                      {categoryLabel(locale, a.category)}
                     </span>
                     <span className="text-slate-400 text-[10px]">{dateStr}</span>
                   </div>
                   <p className="text-slate-900 text-sm font-semibold leading-snug line-clamp-2">
-                    {a.title}
+                    {localeTitle(a, locale)}
                   </p>
                 </div>
               </Link>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import { ArticleMeta } from "@/lib/articles";
-import { CATEGORY_LABELS } from "@/lib/categories";
+import { ArticleMeta, localeTitle } from "@/lib/articles";
+import { categoryLabel, t, type Locale } from "@/lib/i18n";
 
 const CATEGORY_THEME: Record<
   string,
@@ -43,16 +43,24 @@ function pickTheme(cat: string) {
   return CATEGORY_THEME[cat] ?? CATEGORY_THEME.other;
 }
 
-export function ArticleCard({ article }: { article: ArticleMeta }) {
+type CardProps = { article: ArticleMeta; locale?: Locale };
+
+function articleHref(slug: string, locale: Locale): string {
+  return locale === "en" ? `/en/articles/${slug}` : `/articles/${slug}`;
+}
+
+export function ArticleCard({ article, locale = "ja" }: CardProps) {
   const theme = pickTheme(article.category);
-  const label = CATEGORY_LABELS[article.category] ?? theme.label;
+  const label = categoryLabel(locale, article.category);
   const dateStr = article.date
     ? format(new Date(article.date), "yyyy.MM.dd")
     : "";
+  const d = t(locale);
+  const title = localeTitle(article, locale);
 
   return (
     <Link
-      href={`/articles/${article.slug}`}
+      href={articleHref(article.slug, locale)}
       className="group flex gap-4 py-5 border-b border-slate-100 hover:bg-slate-50/60 transition-colors -mx-3 px-3 rounded-lg"
     >
       <div
@@ -62,7 +70,7 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={`/thumbnails/${article.thumbnail}`}
-            alt={article.title}
+            alt={title}
             className="w-full h-full object-cover"
             loading="lazy"
           />
@@ -83,13 +91,13 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
             </span>
             {article.type === "market" && (
               <span className="bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm">
-                予測市場
+                {d.market_badge}
               </span>
             )}
             <span className="text-slate-400 text-xs ml-auto">{dateStr}</span>
           </div>
           <h2 className="text-slate-900 font-bold text-base md:text-lg leading-snug line-clamp-2 group-hover:text-blue-700 transition-colors">
-            {article.title}
+            {title}
           </h2>
         </div>
       </div>
@@ -97,15 +105,16 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
   );
 }
 
-export function HeroCard({ article }: { article: ArticleMeta }) {
+export function HeroCard({ article, locale = "ja" }: CardProps) {
   const theme = pickTheme(article.category);
-  const label = CATEGORY_LABELS[article.category] ?? theme.label;
+  const label = categoryLabel(locale, article.category);
   const dateStr = article.date
     ? format(new Date(article.date), "yyyy.MM.dd HH:mm")
     : "";
+  const title = localeTitle(article, locale);
 
   return (
-    <Link href={`/articles/${article.slug}`} className="group block">
+    <Link href={articleHref(article.slug, locale)} className="group block">
       <div
         className={`relative aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-br ${theme.thumb} flex items-end`}
       >
@@ -113,7 +122,7 @@ export function HeroCard({ article }: { article: ArticleMeta }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={`/thumbnails/${article.thumbnail}`}
-            alt={article.title}
+            alt={title}
             className="absolute inset-0 w-full h-full object-cover"
           />
         ) : null}
@@ -123,7 +132,7 @@ export function HeroCard({ article }: { article: ArticleMeta }) {
             {label}
           </span>
           <h2 className="text-white font-bold text-xl md:text-2xl leading-snug line-clamp-2 group-hover:underline">
-            {article.title}
+            {title}
           </h2>
           <p className="text-white/80 text-xs mt-2">{dateStr}</p>
         </div>

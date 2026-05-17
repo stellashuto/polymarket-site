@@ -43,6 +43,7 @@ export type OddsSeries = {
 export type ArticleMeta = {
   slug: string;
   title: string;
+  title_en: string;
   date: string;
   category: string;
   volume_usd: number;
@@ -55,6 +56,12 @@ export type ArticleMeta = {
   polymarket_url: string;
   odds_history: OddsSeries[];
 };
+
+/** ロケールに応じたタイトルを返す（英語版があれば優先、なければ日本語） */
+export function localeTitle(article: ArticleMeta, locale: "ja" | "en"): string {
+  if (locale === "en" && article.title_en) return article.title_en;
+  return article.title;
+}
 
 export type Article = ArticleMeta & {
   contentHtml: string;
@@ -82,6 +89,7 @@ export function getAllArticles(): ArticleMeta[] {
       type: (data.type as "news" | "market") ?? "market",
       source: data.source ?? "",
       source_url: data.source_url ?? "",
+      title_en: data.title_en ?? "",
       polymarket_url: data.polymarket_url ?? "",
       odds_history: parseOddsHistory(data.odds_history),
     } satisfies ArticleMeta;
@@ -113,6 +121,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
     type: (data.type as "news" | "market") ?? "market",
     source: data.source ?? "",
     source_url: data.source_url ?? "",
+    title_en: data.title_en ?? "",
     polymarket_url: data.polymarket_url ?? "",
     odds_history: parseOddsHistory(data.odds_history),
     contentHtml: processed.toString(),

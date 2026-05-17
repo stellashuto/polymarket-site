@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getArticle, getAllArticles } from "@/lib/articles";
-import { CATEGORY_LABELS } from "@/lib/categories";
+import { getArticle, getAllArticles, localeTitle } from "@/lib/articles";
 import { ArticlePageView } from "@/components/ArticlePageView";
+import { categoryLabel } from "@/lib/i18n";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
 const SITE_NAME = "CryptoBrief";
@@ -20,54 +20,21 @@ function buildDescription(html: string, max = 160): string {
 
 function buildArticleJsonLd(article: Awaited<ReturnType<typeof getArticle>>) {
   if (!article) return null;
-  const url = `${SITE_URL}/articles/${article.slug}`;
+  const url = `${SITE_URL}/en/articles/${article.slug}`;
+  const headline = localeTitle(article, "en");
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: article.title,
+    headline,
     datePublished: article.date,
     dateModified: article.date,
-    inLanguage: "ja",
+    inLanguage: article.title_en ? "en" : "ja",
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    articleSection: CATEGORY_LABELS[article.category] ?? "その他",
+    articleSection: categoryLabel("en", article.category),
     author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     description: buildDescription(article.contentHtml),
-    ...(article.source_url
-      ? {
-          citation: {
-            "@type": "CreativeWork",
-            name: article.source,
-            url: article.source_url,
-          },
-        }
-      : {}),
-  };
-}
-
-function extractFaqJsonLd(html: string) {
-  const items: { q: string; a: string }[] = [];
-  const blockRe = /<h[34][^>]*>([^<]*?)<\/h[34]>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
-  let m: RegExpExecArray | null;
-  while ((m = blockRe.exec(html)) !== null) {
-    const headline = m[1].trim();
-    if (/^(Q\d*\.?|質問|FAQ|よくある質問)/i.test(headline)) {
-      items.push({
-        q: headline.replace(/^Q\d*\.\s*/i, "").replace(/^質問[:：]\s*/, ""),
-        a: m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
-      });
-    }
-  }
-  if (items.length === 0) return null;
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((it) => ({
-      "@type": "Question",
-      name: it.q,
-      acceptedAnswer: { "@type": "Answer", text: it.a },
-    })),
   };
 }
 
@@ -76,47 +43,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticle(slug);
   if (!article) return {};
   const description = buildDescription(article.contentHtml);
-  const url = `${SITE_URL}/articles/${article.slug}`;
+  const title = localeTitle(article, "en");
+  const url = `${SITE_URL}/en/articles/${article.slug}`;
   const ogImage = article.thumbnail
     ? `${SITE_URL}/thumbnails/${article.thumbnail}`
     : undefined;
   return {
-    title: article.title,
+    title,
     description,
     alternates: {
       canonical: url,
       languages: {
-        "ja": url,
-        "en": `${SITE_URL}/en/articles/${article.slug}`,
-        "x-default": url,
+        "ja": `${SITE_URL}/articles/${article.slug}`,
+        "en": url,
+        "x-default": `${SITE_URL}/articles/${article.slug}`,
       },
     },
     openGraph: {
       type: "article",
       url,
-      title: article.title,
+      title,
       description,
       publishedTime: article.date,
-      tags: [CATEGORY_LABELS[article.category] ?? article.category],
+      tags: [categoryLabel("en", article.category)],
       ...(ogImage ? { images: [{ url: ogImage, width: 1280, height: 720 }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
+      title,
       description,
       ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function ArticlePageEn({ params }: Props) {
   const { slug } = await params;
   const article = await getArticle(slug);
   if (!article) notFound();
 
   const allArticles = getAllArticles();
   const articleJsonLd = buildArticleJsonLd(article);
-  const faqJsonLd = extractFaqJsonLd(article.contentHtml);
 
   return (
     <>
@@ -126,13 +93,7 @@ export default async function ArticlePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
         />
       )}
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
-      <ArticlePageView article={article} allArticles={allArticles} locale="ja" />
+      <ArticlePageView article={article} allArticles={allArticles} locale="en" />
     </>
   );
 }
