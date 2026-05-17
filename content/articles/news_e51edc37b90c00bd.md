@@ -1,5 +1,6 @@
 ---
 title: "IRENが約4,700億円の転換社債発行を完了──ビットコインマイニングからAIクラウドへ本格シフト"
+title_en: "IREN Completes Issuance of 47 Billion Yen in Convertible Bonds as It Pivots from Bitcoin Mining to AI Cloud Services"
 date: "2026-05-16T03:38:46Z"
 published_at: "2026-05-16T00:30:00Z"
 category: "crypto"

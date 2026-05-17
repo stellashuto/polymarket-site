@@ -1,5 +1,6 @@
 ---
 title: "STRC優先株の「流動性リスク」を市場は見誤っている――アナリストが警鐘"
+title_en: "Analysts warn the market is misjudging liquidity risk in STRC preferred shares"
 date: "2026-05-17T01:21:22Z"
 published_at: "2026-05-16T22:50:56Z"
 category: "economics"
