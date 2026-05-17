@@ -45,7 +45,8 @@ export type ArticleMeta = {
   title: string;
   title_en: string;
   date: string;
-  category: string;
+  category: string;          // プライマリカテゴリ (categories[0])
+  categories: string[];      // 該当する全カテゴリ
   volume_usd: number;
   condition_id: string;
   chart_image: string;
@@ -56,6 +57,13 @@ export type ArticleMeta = {
   polymarket_url: string;
   odds_history: OddsSeries[];
 };
+
+/** ある記事が指定カテゴリに該当するか（all は常にtrue） */
+export function matchesCategory(article: ArticleMeta, category: string): boolean {
+  if (category === "all") return true;
+  if (article.categories?.length) return article.categories.includes(category);
+  return article.category === category;
+}
 
 /** ロケールに応じたタイトルを返す（英語版があれば優先、なければ日本語） */
 export function localeTitle(article: ArticleMeta, locale: "ja" | "en"): string {
@@ -90,6 +98,9 @@ export function getAllArticles(): ArticleMeta[] {
       source: data.source ?? "",
       source_url: data.source_url ?? "",
       title_en: data.title_en ?? "",
+      categories: Array.isArray(data.categories) && data.categories.length > 0
+        ? data.categories.map(String)
+        : [data.category ?? "other"],
       polymarket_url: data.polymarket_url ?? "",
       odds_history: parseOddsHistory(data.odds_history),
     } satisfies ArticleMeta;
@@ -122,6 +133,9 @@ export async function getArticle(slug: string): Promise<Article | null> {
     source: data.source ?? "",
     source_url: data.source_url ?? "",
     title_en: data.title_en ?? "",
+    categories: Array.isArray(data.categories) && data.categories.length > 0
+      ? data.categories.map(String)
+      : [data.category ?? "other"],
     polymarket_url: data.polymarket_url ?? "",
     odds_history: parseOddsHistory(data.odds_history),
     contentHtml: processed.toString(),

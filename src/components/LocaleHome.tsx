@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { getAllArticles } from "@/lib/articles";
+import { getAllArticles, matchesCategory } from "@/lib/articles";
 import { ArticleCard } from "@/components/ArticleCard";
 import { MainHero, SubHero } from "@/components/HeroGrid";
 import { PopularRanking } from "@/components/PopularRanking";
@@ -22,7 +22,7 @@ export async function LocaleHome({ locale, category }: Props) {
   const current = category;
 
   const all = getAllArticles();
-  const articles = current === "all" ? all : all.filter((a) => a.category === current);
+  const articles = all.filter((a) => matchesCategory(a, current));
   const [hero, sub1, sub2, ...rest] = articles;
 
   const homeHref = locale === "en" ? "/en" : "/";

@@ -50,13 +50,18 @@ function articleHref(slug: string, locale: Locale): string {
 }
 
 export function ArticleCard({ article, locale = "ja" }: CardProps) {
-  const theme = pickTheme(article.category);
-  const label = categoryLabel(locale, article.category);
+  const cats = article.categories?.length ? article.categories : [article.category];
+  const primaryCat = cats[0];
+  const theme = pickTheme(primaryCat);
+  const label = categoryLabel(locale, primaryCat);
   const dateStr = article.date
     ? format(new Date(article.date), "yyyy.MM.dd")
     : "";
   const d = t(locale);
   const title = localeTitle(article, locale);
+  // セカンダリカテゴリは最大1つ表示（カードがごちゃつかないよう）
+  const secondaryCat = cats.length > 1 ? cats[1] : null;
+  const secondaryTheme = secondaryCat ? pickTheme(secondaryCat) : null;
 
   return (
     <Link
@@ -83,12 +88,19 @@ export function ArticleCard({ article, locale = "ja" }: CardProps) {
 
       <div className="flex flex-col justify-between min-w-0 flex-1">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
             <span
               className={`${theme.badge} text-[11px] font-medium px-2 py-0.5 rounded-sm`}
             >
               {label}
             </span>
+            {secondaryCat && secondaryTheme && (
+              <span
+                className={`${secondaryTheme.badge} text-[11px] font-medium px-2 py-0.5 rounded-sm opacity-80`}
+              >
+                {categoryLabel(locale, secondaryCat)}
+              </span>
+            )}
             {article.type === "market" && (
               <span className="bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm">
                 {d.market_badge}
