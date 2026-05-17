@@ -27,6 +27,7 @@ export function OddsChart({ series, width = 700, height = 220 }: Props) {
   const allTimes = series.flatMap((s) => s.history.map((p) => p[0]));
   const minT = Math.min(...allTimes);
   const maxT = Math.max(...allTimes);
+  const spanDays = Math.max(1, Math.round((maxT - minT) / 86400));
   // Y軸: 0〜100%固定
   const minP = 0;
   const maxP = 100;
@@ -49,7 +50,7 @@ export function OddsChart({ series, width = 700, height = 220 }: Props) {
     <figure className="my-6 not-prose">
       <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-slate-900 font-bold text-sm">過去7日間のオッズ推移</h3>
+          <h3 className="text-slate-900 font-bold text-sm">オッズ推移（直近{spanDays}日間）</h3>
           <div className="flex gap-3 flex-wrap">
             {series.map((s, i) => {
               const last = s.history[s.history.length - 1];
@@ -141,7 +142,7 @@ export function OddsChart({ series, width = 700, height = 220 }: Props) {
         </svg>
       </div>
       <figcaption className="text-xs text-slate-500 mt-1.5 text-center">
-        出典: Polymarket CLOB API（過去7日間・1時間足）
+        出典: Polymarket CLOB API
       </figcaption>
     </figure>
   );
