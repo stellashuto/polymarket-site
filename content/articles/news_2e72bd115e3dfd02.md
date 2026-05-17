@@ -1,6 +1,6 @@
 ---
 title: "BTC1290万円台で底堅さ見せるも200日線が壁、米中会談で次の一手が決まる"
-title_en: "Bitcoin Holds Ground in the 12.9 Million Yen Range but Faces Resistance at 200-Day Moving Average as Next Move Hinges on US-China Talks"
+title_en: "Bitcoin Holds Firm Above ¥12.9 Million but 200-Day Moving Average Looms as Resistance; U.S.-China Talks to Determine Next Move"
 date: "2026-05-17T03:00:52Z"
 published_at: "2026-05-17T02:30:02Z"
 category: "politics"

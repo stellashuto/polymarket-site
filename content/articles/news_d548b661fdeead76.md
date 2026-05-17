@@ -1,6 +1,6 @@
 ---
 title: "ビットコインが7万8,000ドルへ急落——ロングポジション5億ドル超が強制清算、SOL・XRPも5%安"
-title_en: "Bitcoin plummets to $78,000 as over $500 million in long positions liquidated, SOL and XRP fall 5%"
+title_en: "Bitcoin Plunges to $78,000 as Over $500 Million in Long Positions Liquidated; SOL and XRP Also Fall 5%"
 date: "2026-05-16T08:33:40Z"
 published_at: "2026-05-16T07:36:02Z"
 category: "crypto"

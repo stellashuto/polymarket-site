@@ -1,6 +1,6 @@
 ---
 title: "米議会がトランプ大統領にCFTC委員の指名を要請——CLARITY法案の審議加速に向け"
-title_en: "U.S. Congress Requests Trump to Nominate CFTC Commissioners as CLARITY Bill Debate Accelerates"
+title_en: "U.S. Congress Urges President Trump to Nominate CFTC Commissioners to Accelerate CLARITY Act Deliberations"
 date: "2026-05-16T08:34:22Z"
 published_at: "2026-05-15T23:10:35Z"
 category: "politics"
