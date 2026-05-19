@@ -17,6 +17,11 @@ const CATEGORY_THEME: Record<
     badge: "bg-orange-50 text-orange-700",
     label: "暗号資産",
   },
+  airdrop: {
+    thumb: "from-teal-500 to-cyan-700",
+    badge: "bg-teal-50 text-teal-700",
+    label: "エアドロップ",
+  },
   sports: {
     thumb: "from-emerald-500 to-green-700",
     badge: "bg-emerald-50 text-emerald-700",

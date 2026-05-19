@@ -6,6 +6,7 @@ import { categoryLabel, type Locale } from "@/lib/i18n";
 const CATEGORY_GRADIENT: Record<string, string> = {
   politics: "from-blue-600 to-blue-800",
   crypto: "from-orange-500 to-amber-600",
+  airdrop: "from-teal-500 to-cyan-700",
   sports: "from-emerald-500 to-green-700",
   economics: "from-purple-600 to-violet-800",
   entertainment: "from-pink-500 to-rose-700",

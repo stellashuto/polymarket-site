@@ -29,6 +29,7 @@ export type Dictionary = {
   cat_all: string;
   cat_politics: string;
   cat_crypto: string;
+  cat_airdrop: string;
   cat_sports: string;
   cat_economics: string;
   cat_entertainment: string;
@@ -89,6 +90,7 @@ export const DICT: Record<Locale, Dictionary> = {
     cat_all: "すべて",
     cat_politics: "政治",
     cat_crypto: "暗号資産",
+    cat_airdrop: "エアドロップ",
     cat_sports: "スポーツ",
     cat_economics: "経済",
     cat_entertainment: "エンタメ",
@@ -145,6 +147,7 @@ export const DICT: Record<Locale, Dictionary> = {
     cat_all: "All",
     cat_politics: "Politics",
     cat_crypto: "Crypto",
+    cat_airdrop: "Airdrops",
     cat_sports: "Sports",
     cat_economics: "Economics",
     cat_entertainment: "Entertainment",
@@ -195,6 +198,7 @@ export function categoryLabel(locale: Locale, category: string): string {
     case "all":           return d.cat_all;
     case "politics":      return d.cat_politics;
     case "crypto":        return d.cat_crypto;
+    case "airdrop":       return d.cat_airdrop;
     case "sports":        return d.cat_sports;
     case "economics":     return d.cat_economics;
     case "entertainment": return d.cat_entertainment;

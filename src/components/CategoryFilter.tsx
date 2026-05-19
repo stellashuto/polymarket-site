@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { categoryLabel, type Locale } from "@/lib/i18n";
 
-const CATEGORIES = ["all", "crypto", "economics", "politics", "sports", "entertainment", "other"];
+const CATEGORIES = ["all", "crypto", "airdrop", "economics", "politics", "sports", "entertainment", "other"];
 
 type Props = { current: string; locale?: Locale };
 

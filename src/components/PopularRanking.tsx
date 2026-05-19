@@ -7,6 +7,7 @@ type Props = { articles: ArticleMeta[]; limit?: number; locale?: Locale };
 const CATEGORY_BADGE: Record<string, string> = {
   politics: "bg-blue-50 text-blue-700",
   crypto: "bg-orange-50 text-orange-700",
+  airdrop: "bg-teal-50 text-teal-700",
   sports: "bg-emerald-50 text-emerald-700",
   economics: "bg-purple-50 text-purple-700",
   entertainment: "bg-pink-50 text-pink-700",
