@@ -9,6 +9,11 @@ import { NextResponse, type NextRequest } from "next/server";
  * 既に `/en` プレフィックスにアクセスしているユーザーや、ユーザーが明示的に
  * 言語を切り替えた後は、リダイレクトしない。
  */
+// 検索エンジン / AIクローラーは地域リダイレクトの対象外にする。
+// これらにリダイレクトをかけると Google が /en/... を正規ページとして
+// 選んでしまい、日本語版がインデックスから外れるため。
+const BOT_UA_RE = /bot|crawler|spider|googlebot|bingbot|duckduckbot|slurp|baiduspider|yandex|sogou|exabot|facebot|ia_archiver|gptbot|chatgpt-user|claudebot|claude-web|anthropic-ai|perplexitybot|perplexity-user|google-extended|applebot|bytespider|amazonbot|meta-externalagent|oai-searchbot/i;
+
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
@@ -22,6 +27,12 @@ export function proxy(req: NextRequest) {
     pathname.startsWith("/thumbnails") ||
     pathname.includes(".")
   ) {
+    return NextResponse.next();
+  }
+
+  // ボット判定 → 地域リダイレクトしない（SEO重要）
+  const ua = req.headers.get("user-agent") ?? "";
+  if (BOT_UA_RE.test(ua)) {
     return NextResponse.next();
   }
 

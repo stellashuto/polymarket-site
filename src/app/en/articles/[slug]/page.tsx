@@ -48,16 +48,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = article.thumbnail
     ? `${SITE_URL}/thumbnails/${article.thumbnail}`
     : undefined;
+  const jaUrl = `${SITE_URL}/articles/${article.slug}`;
   return {
     title,
     description,
+    // 本文がまだ日本語のままなので canonical は日本語版を指す。
+    // /en は補助的ナビゲーション（UI英語化）として提供している扱い。
+    // 将来、本文を完全英訳できたら canonical を url 自身に戻す。
     alternates: {
-      canonical: url,
+      canonical: jaUrl,
       languages: {
-        "ja": `${SITE_URL}/articles/${article.slug}`,
+        "ja": jaUrl,
         "en": url,
-        "x-default": `${SITE_URL}/articles/${article.slug}`,
+        "x-default": jaUrl,
       },
+    },
+    robots: {
+      // インデックス自体は許可（クリック先として有用）するが、
+      // canonical 経由で日本語版に集約されるため重複扱いされない
+      index: true,
+      follow: true,
     },
     openGraph: {
       type: "article",
