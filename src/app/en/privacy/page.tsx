@@ -25,6 +25,7 @@ export default function PrivacyPageEn() {
           <Link href="/en" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
             <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
           </Link>
           <div className="ml-auto">
             <LanguageToggle current="en" />

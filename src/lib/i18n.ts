@@ -72,7 +72,7 @@ export type Dictionary = {
 
 export const DICT: Record<Locale, Dictionary> = {
   ja: {
-    tagline: "仮想通貨・金融・予測市場のニュースを日本語で簡潔に",
+    tagline: "仮想通貨・予測市場・エアドロップを簡潔に",
     about: "運営者情報",
     privacy: "プライバシーポリシー",
     rss: "RSS",
@@ -84,7 +84,7 @@ export const DICT: Record<Locale, Dictionary> = {
     sources_label: "情報ソース",
     categories_label: "カテゴリ",
     site_label: "サイト",
-    copyright_note: "仮想通貨・金融・予測市場の独立系ニュースメディア",
+    copyright_note: "仮想通貨・予測市場・エアドロップの独立系ニュースメディア",
     affiliate_note: "本サイトはアフィリエイトプログラムに参加しています",
 
     cat_all: "すべて",
@@ -129,7 +129,7 @@ export const DICT: Record<Locale, Dictionary> = {
     view_in_japanese: "View in Japanese",
   },
   en: {
-    tagline: "Crypto, finance, and prediction market news—in brief.",
+    tagline: "Crypto, prediction markets, and airdrops — in brief.",
     about: "About",
     privacy: "Privacy Policy",
     rss: "RSS",
@@ -141,7 +141,7 @@ export const DICT: Record<Locale, Dictionary> = {
     sources_label: "Sources",
     categories_label: "Categories",
     site_label: "Site",
-    copyright_note: "Independent news media on crypto, finance, and prediction markets",
+    copyright_note: "Independent media on crypto, prediction markets, and airdrops",
     affiliate_note: "This site participates in affiliate programs",
 
     cat_all: "All",

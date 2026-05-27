@@ -42,6 +42,7 @@ export async function LocaleHome({ locale, category }: Props) {
           <Link href={homeHref} className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
             <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
           </Link>
           <div className="flex items-center gap-3">
             <span className="text-slate-500 text-xs hidden sm:inline">
@@ -136,6 +137,7 @@ export async function LocaleHome({ locale, category }: Props) {
               <div className="flex items-baseline gap-1.5 mb-3">
                 <span className="text-blue-700 font-black tracking-tight">Crypto</span>
                 <span className="text-slate-900 font-black tracking-tight">Brief</span>
+                <span className="text-slate-400 font-bold text-[10px] tracking-wider">JP</span>
               </div>
               <p className="text-slate-600 text-xs leading-relaxed">{d.copyright_note}</p>
             </div>

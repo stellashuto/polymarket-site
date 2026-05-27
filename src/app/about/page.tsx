@@ -43,6 +43,7 @@ export default function AboutPage() {
           <Link href="/" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
             <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
           </Link>
           <div className="ml-auto">
             <LanguageToggle current="ja" />
@@ -61,7 +62,7 @@ export default function AboutPage() {
 
         <h1>運営者情報 / 編集方針</h1>
 
-        <p>CryptoBrief（クリプトブリーフ）は、仮想通貨・金融・予測市場の3領域を横断する日本語のオンラインメディアです。Polymarket等の予測市場データと、国内外の信頼できるニュースソースを組み合わせ、投資家・トレーダー向けに市況解説を配信しています。</p>
+        <p>CryptoBrief JP（クリプトブリーフ ジェイピー）は、仮想通貨・予測市場・エアドロップ・金融ニュースを横断的にカバーする独立系オンラインメディアです。Polymarket等の予測市場データと、国内外の信頼できるニュースソースを組み合わせ、投資家・トレーダー向けに市況解説と銘柄解説を日英で配信しています。</p>
 
         <h2>サイトの目的</h2>
         <p>急速に発展する暗号資産・予測市場・金融市場の動向を、日本語で正確かつ迅速に届けることを目的としています。一次データに基づいた解説に重点を置き、推測や煽りを避け、読者が自ら判断する材料となる情報提供を心がけています。</p>

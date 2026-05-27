@@ -27,6 +27,7 @@ export default function AboutPageEn() {
           <Link href="/en" className="flex items-baseline gap-1.5">
             <span className="text-blue-700 font-black text-lg tracking-tight">Crypto</span>
             <span className="text-slate-900 font-black text-lg tracking-tight">Brief</span>
+            <span className="text-slate-400 font-bold text-xs tracking-wider ml-0.5">JP</span>
           </Link>
           <div className="ml-auto">
             <LanguageToggle current="en" />
@@ -45,7 +46,7 @@ export default function AboutPageEn() {
 
         <h1>About / Editorial Policy</h1>
 
-        <p>CryptoBrief is an independent Japanese-language online media outlet covering three intersecting domains: cryptocurrency, finance, and prediction markets. We combine Polymarket data with trusted news sources from Japan and abroad to deliver market commentary aimed at investors and traders.</p>
+        <p>CryptoBrief JP is an independent bilingual (Japanese / English) online media outlet covering cryptocurrency, prediction markets, airdrops, and broader financial news. We combine Polymarket data with trusted news sources from Japan and abroad to deliver market commentary and token explainers for investors and traders worldwide.</p>
 
         <h2>Mission</h2>
         <p>To deliver accurate, timely Japanese-language coverage of fast-moving developments in crypto, prediction markets, and broader financial markets. We emphasize commentary grounded in primary data, avoid speculation, and aim to give readers the information they need to form their own views.</p>

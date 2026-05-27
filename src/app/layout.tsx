@@ -18,14 +18,14 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptobrief.app";
-const SITE_NAME = "CryptoBrief";
-const SITE_DESC = "仮想通貨ニュース・金融ニュース・予測市場データを日本語で配信する独立系メディア。Polymarketのオッズと市場ニュースから、市況・トレンドを解説します。";
+const SITE_NAME = "CryptoBrief JP";
+const SITE_DESC = "仮想通貨ニュース・金融ニュース・予測市場データの独立系メディア。Polymarketのオッズ、エアドロップ情報、主要銘柄の解説を日本語と英語で配信。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `CryptoBrief — 仮想通貨・金融・予測市場のニュースを日本語で簡潔に`,
-    template: `%s | CryptoBrief`,
+    default: `CryptoBrief JP — 仮想通貨・予測市場・エアドロップ情報`,
+    template: `%s | CryptoBrief JP`,
   },
   description: SITE_DESC,
   keywords: [
