@@ -9,44 +9,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles();
   const now = new Date();
 
-  const articleEntries: MetadataRoute.Sitemap = articles.flatMap((a) => {
+  // 記事は日本語版だけサイトマップに登録する。
+  // /en/articles/ は本文がまだ日本語のままで noindex 扱いなので、
+  // sitemap に含めるとクロール予算の無駄になる。
+  // 完全に英訳できたら再度両方を入れる。
+  const articleEntries: MetadataRoute.Sitemap = articles.map((a) => {
     const last = a.date ? new Date(a.date) : now;
-    return [
-      {
-        url: `${SITE_URL}/articles/${a.slug}`,
-        lastModified: last,
-        changeFrequency: "weekly",
-        priority: 0.8,
-        alternates: {
-          languages: {
-            ja: `${SITE_URL}/articles/${a.slug}`,
-            en: `${SITE_URL}/en/articles/${a.slug}`,
-          },
+    return {
+      url: `${SITE_URL}/articles/${a.slug}`,
+      lastModified: last,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          ja: `${SITE_URL}/articles/${a.slug}`,
+          en: `${SITE_URL}/en/articles/${a.slug}`,
         },
       },
-      {
-        url: `${SITE_URL}/en/articles/${a.slug}`,
-        lastModified: last,
-        changeFrequency: "weekly",
-        priority: 0.7,
-      },
-    ];
+    };
   });
 
-  const categoryEntries: MetadataRoute.Sitemap = CATEGORIES.flatMap((cat) => [
-    {
-      url: `${SITE_URL}/?category=${cat}`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.6,
-    },
-    {
-      url: `${SITE_URL}/en?category=${cat}`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.5,
-    },
-  ]);
+  // カテゴリは日本語版のみ登録（/en はホームから辿れるので Discoverability は確保）
+  const categoryEntries: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
+    url: `${SITE_URL}/?category=${cat}`,
+    lastModified: now,
+    changeFrequency: "daily",
+    priority: 0.6,
+  }));
 
   return [
     {

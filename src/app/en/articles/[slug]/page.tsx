@@ -63,10 +63,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "x-default": jaUrl,
       },
     },
+    // 重要: noindex に変更。canonical=JA + index=true の矛盾を解消し、
+    // Googleのクロール予算を日本語版に集中させる。
+    // ユーザーは引き続き /en/articles/ にアクセス可能。
     robots: {
-      // インデックス自体は許可（クリック先として有用）するが、
-      // canonical 経由で日本語版に集約されるため重複扱いされない
-      index: true,
+      index: false,
       follow: true,
     },
     openGraph: {
