@@ -148,6 +148,10 @@ export async function LocaleHome({ locale, category }: Props) {
               <ul className="space-y-1.5 text-slate-600">
                 <li><Link href={homeHref} className="hover:text-blue-700">{d.home}</Link></li>
                 <li><Link href={aboutHref} className="hover:text-blue-700">{d.about}</Link></li>
+                <li><Link href="/editorial-team" className="hover:text-blue-700">編集体制</Link></li>
+                <li><Link href="/editorial-policy" className="hover:text-blue-700">編集方針</Link></li>
+                <li><Link href="/fact-checking" className="hover:text-blue-700">ファクトチェック</Link></li>
+                <li><Link href="/methodology" className="hover:text-blue-700">取材方法</Link></li>
                 <li><Link href={privacyHref} className="hover:text-blue-700">{d.privacy}</Link></li>
                 <li><Link href="/feed.xml" className="hover:text-blue-700">{d.rss}</Link></li>
               </ul>

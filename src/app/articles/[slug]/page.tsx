@@ -31,8 +31,21 @@ function buildArticleJsonLd(article: Awaited<ReturnType<typeof getArticle>>) {
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     articleSection: CATEGORY_LABELS[article.category] ?? "その他",
-    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    author: {
+      "@type": "Organization",
+      name: `${SITE_NAME} 編集部`,
+      url: `${SITE_URL}/editorial-team`,
+      knowsAbout: ["仮想通貨", "Polymarket", "予測市場", "エアドロップ", "DeFi"],
+    },
+    publisher: {
+      "@type": "NewsMediaOrganization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      diversityPolicy: `${SITE_URL}/editorial-policy`,
+      ethicsPolicy: `${SITE_URL}/editorial-policy`,
+      correctionsPolicy: `${SITE_URL}/fact-checking`,
+      masthead: `${SITE_URL}/editorial-team`,
+    },
     description: buildDescription(article.contentHtml),
     ...(article.source_url
       ? {

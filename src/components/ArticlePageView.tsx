@@ -112,7 +112,7 @@ export function ArticlePageView({ article, allArticles, locale }: Props) {
           ]}
         />
 
-        <div className="flex flex-wrap items-center gap-3 mb-4">
+        <div className="flex flex-wrap items-center gap-3 mb-2">
           <Link
             href={catHref(article.category)}
             className={`${theme.badge} text-xs font-bold px-2.5 py-1 rounded-sm hover:opacity-80 transition-opacity`}
@@ -122,6 +122,18 @@ export function ArticlePageView({ article, allArticles, locale }: Props) {
           <span className="text-slate-500 text-xs">{dateStr}</span>
           <span className="text-slate-400 text-xs">·</span>
           <span className="text-slate-500 text-xs">{d.reading_minutes(minutes)}</span>
+        </div>
+
+        {/* 著者バイライン（E-E-A-T） */}
+        <div className="flex items-center gap-2 mb-4 text-xs text-slate-500">
+          <span>執筆:</span>
+          <Link href="/editorial-team" className="text-slate-700 font-medium hover:text-blue-700 hover:underline">
+            CryptoBrief JP 編集部
+          </Link>
+          <span>·</span>
+          <Link href="/fact-checking" className="text-slate-500 hover:text-blue-700 hover:underline">
+            ファクトチェック方針
+          </Link>
         </div>
 
         <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-6">
