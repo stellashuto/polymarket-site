@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "intermediate"
 thumbnail: "airdrop_guide-wallet-prep.webp"
 type: "airdrop"
+x_post: |
+  🔐 ウォレット設計の甘さがエアドロップ機会を潰す
+  
+  MetaMask・Phantom・Rabbyは用途が別物。「とりあえずMetaMask」は非効率かつSybil検知リスクあり。
+  IPやデバイスフィンガープリントまで追跡される今、ウォレット分離だけでは足りない。
+  日本居住者は受領時点で雑所得課税リスクも要確認。
+  
+  #エアドロップ #OPSEC #Sybil #HDウォレット
 ---
 
 ## ポイント

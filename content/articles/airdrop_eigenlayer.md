@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_eigenlayer.webp"
 type: "airdrop"
+x_post: |
+  🔁 EigenLayerはEIGEN配布後こそが本番
+  
+  AltLayer・EigenDA・LagrangeなどAVSからのエアドロップが継続中。
+  ETH/LST/LRTをデポジットしPointを積みながら、AVSコミュニティ活動への参加が攻略の軸。
+  Sybil検知が強化されており、ウォレット間の資金移動パターンには要注意。
+  
+  #EigenLayer #リステーキング #エアドロップ #AVS
 ---
 
 ## ポイント

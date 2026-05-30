@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_pendle.webp"
 type: "airdrop"
+x_post: |
+  📈 Pendle YTで他プロジェクトのポイントを"レバレッジ収集"する
+  
+  1ドルの元手で数倍速のポイント蓄積が可能。
+  2026年1月のトークノミクス刷新でvePENDLE→sPENDLEに移行、プロトコル収益の最大80%をバイバックに充当する設計に。
+  LRT・スタブルコインのファーミングにYTを使わないのは非効率。
+  
+  #Pendle #エアドロップ #YieldFarming #DeFi
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_jupiter.webp"
 type: "airdrop"
+x_post: |
+  🪐 Jupiter JUP、シーズン継続エアドロップの攻略が本格化
+  
+  Solanaのオンチェーン取引量を握るDEXアグリゲータ。
+  シーズン1では1ウォレットあたり数百〜数千ドル相当を配布済み。
+  スワップ継続・LFG Launchpad参加・Sybil回避の頻度設計が次の分岐点。
+  
+  #Jupiter #JUP #Solana #エアドロップ
 ---
 
 ## ポイント

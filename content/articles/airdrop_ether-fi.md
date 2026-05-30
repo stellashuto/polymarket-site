@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_ether-fi.webp"
 type: "airdrop"
+x_post: |
+  🔁 ether.fi、シーズン継続中——LRTポイント設計の核心
+  
+  eETH保有だけでLoyalty Points自動付与。DeFi連携で最大4倍。
+  Season 1は数百〜数千ドル相当のETHFI配布実績あり。
+  Sybil検知は厳格化済み。複数ウォレット運用はリスク大。
+  
+  #etherfi #ETHFI #リステーキング #エアドロップ
 ---
 
 ## ポイント

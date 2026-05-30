@@ -10,6 +10,14 @@ crypto_symbol: "JPYC"
 crypto_category: "Stablecoin"
 thumbnail: "crypto_jpyc.webp"
 type: "explainer"
+x_post: |
+  🇯🇵 日本初の法定円ステーブルコイン、JPYCが本格始動
+  
+  2025年10月より「電子決済手段」として発行・償還スタート。
+  裏付け資産は国債8割＋現預金2割、累計調達額は約2,893万ドルに到達。
+  仮想通貨でも電子マネーでもない、資金決済法の新カテゴリ。
+  
+  #JPYC #ステーブルコイン #電子決済手段 #円建て
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "beginner"
 thumbnail: "airdrop_layerzero.webp"
 type: "airdrop"
+x_post: |
+  🌐 ZROは終わった話ではなく、「上に乗るdApp層」が本番
+  
+  LayerZero本体への参加は2024年6月に締め切り済み。
+  ただし400以上のdAppが稼働中で、Stargate含む各プロジェクトが独自に配布機会を持つ構造は健在。
+  過去のArbitrum・Starknetでも、インフラより上位dAppの方が高配布になったケースあり。
+  
+  #LayerZero #エアドロップ #オムニチェーン #Airdrop
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_berachain.webp"
 type: "airdrop"
+x_post: |
+  🐻 Berachainエアドロップは配布済み——今からの立ち回りはBBBモデルが鍵
+  
+  初回BERA配布は2025年2月完了、総供給の15.75%相当。
+  Boycoの流動性ブートストラップ期は終わり、現在は「実キャッシュフロー」重視フェーズへ移行。
+  PoLのBGT戦略とフェーズ後の動き方を整理した。
+  
+  #Berachain #PoL #エアドロップ #BERA
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "intermediate"
 thumbnail: "airdrop_guide-points-meta.webp"
 type: "airdrop"
+x_post: |
+  📊 「つなぐだけ」時代は終わった——ポイント制エアドロの現実
+  
+  行動量×継続期間で配分が決まる設計が主流に。
+  EigenLayer・Ethena・Karakは倍率・対象アクションに明確な差があり、比較せずに動くと機会損失が出る。
+  Sybil判定は2024年以降に厳格化、複数ウォレットの機械的運用はリスク大。
+  
+  #エアドロップ #EigenLayer #Ethena #Sybil
 ---
 
 ## ポイント

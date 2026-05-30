@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "beginner"
 thumbnail: ""
 type: "airdrop"
+x_post: |
+  📡 FarcasterのFID、持っているだけでDegenとMoxieが飛んできた
+  
+  Optimismチェーン上にアカウントを記録する分散型ソーシャル。
+  登録コストは約5〜10ドルだが、過去の配布実績を見ると回収できるケースが多い。
+  Sybil対策は年々強化中——複数ウォレットでの機械的な操作は除外リスクあり。
+  
+  #Farcaster #エアドロップ #Degen #Moxie
 ---
 
 ## ポイント

@@ -10,6 +10,14 @@ crypto_symbol: "USDT"
 crypto_category: "Stablecoin"
 thumbnail: "crypto_usdt.webp"
 type: "explainer"
+x_post: |
+  💵 時価総額1,000億ドル超——USDTの「当たり前」を改めて整理する
+  
+  1USDT＝1ドルのペッグを米国債などで裏付ける法定通貨担保型。
+  国内取引所での取扱はほぼなく、主戦場は海外取引所とDeFi。
+  見落としがちな点：USDTを使った取引も日本の税制上は課税対象。
+  
+  #USDT #ステーブルコイン #Tether #仮想通貨
 ---
 
 ## ポイント

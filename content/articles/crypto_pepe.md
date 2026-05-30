@@ -10,6 +10,14 @@ crypto_symbol: "PEPE"
 crypto_category: "Meme"
 thumbnail: "crypto_pepe.webp"
 type: "explainer"
+x_post: |
+  🐸 ミームコインが初のスポットETF申請──PEPEが新局面へ
+  
+  Canary CapitalがSECにPEPEのS-1を提出（2026年4月）。
+  時価総額14.1億ドル、国内ではCoincheck・BITPOINTでも正規購入可能に。
+  "実用性ゼロ"を公言しながら、規制商品化へ踏み出したカエルの現在地。
+  
+  #PEPE #ミームコイン #仮想通貨ETF #CoincheckJP
 ---
 
 ## ポイント

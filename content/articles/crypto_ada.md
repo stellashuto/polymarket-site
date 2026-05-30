@@ -10,6 +10,14 @@ crypto_symbol: "ADA"
 crypto_category: "L1"
 thumbnail: "crypto_ada.webp"
 type: "explainer"
+x_post: |
+  🔬 カルダノADA、2026年に過去最大規模の変化
+  
+  CME先物は2月9日に上場済み。スポットETF審査の最短解禁は8月9日以降。
+  ChangハードフォークでオンチェーンガバナンスはすでにADA保有者の手に。
+  「遅くても正しく」の哲学が、いよいよ制度側と交差する。
+  
+  #Cardano #ADA #仮想通貨 #ETF
 ---
 
 ## ポイント

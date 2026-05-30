@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "intermediate"
 thumbnail: "airdrop_guide-sybil-avoidance.webp"
 type: "airdrop"
+x_post: |
+  🚨 Sybil検知は「アドレス変更」では突破できない
+  
+  資金フローの共通ガスアドレス・同一タイムスタンプ・画一的なTx順序が主要シグナル。
+  ARBやOP配布後の売り圧の一因も、Sybil占有率30〜40%という構造的問題にある。
+  除外後のアピール通過率は低く、永久BAのリスクも。日本居住者は受領時の雑所得課税にも注意。
+  
+  #エアドロップ #Sybil #Airdrop #オンチェーン
 ---
 
 ## ポイント

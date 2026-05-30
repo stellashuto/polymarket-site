@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "beginner"
 thumbnail: "airdrop_wormhole.webp"
 type: "airdrop"
+x_post: |
+  🌉 Wトークン配布後も、Wormhole経由エアドロの波は続いている
+  
+  30チェーン超をつなぐクロスチェーンメッセージング基盤として、Wormhole上のプロジェクトが今も順次TGEを控える。
+  ブリッジ利用履歴はオンチェーンに残り、取引量・回数・チェーン数が資格審査に直結。
+  Sybil検知強化で複数ウォレット戦略はリスク大。少数ウォレットで質を積む時期。
+  
+  #Wormhole #エアドロップ #クロスチェーン #Sybil
 ---
 
 ## ポイント

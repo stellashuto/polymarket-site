@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_zksync.webp"
 type: "airdrop"
+x_post: |
+  🔄 ZKトークン配布は終了——次の戦場はElastic Networkのエコシステム
+  
+  初回エアドロップの請求期限は2025年1月5日で完全終了。
+  TVL 780Mドル・アドレス数997万のZKsync Eraで動くdAppが次の候補。
+  AlexG氏によるトークン経済モデル刷新（バイバック・バーン設計）も進行中。
+  
+  #ZKsync #エアドロップ #ElasticNetwork #ZK
 ---
 
 ## ポイント

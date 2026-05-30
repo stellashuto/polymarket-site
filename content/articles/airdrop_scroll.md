@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_scroll.webp"
 type: "airdrop"
+x_post: |
+  🔵 Scroll Marksを今から積む理由
+  
+  zkRollup純度の高さで注目のScroll L2。
+  ブリッジ＋DeFi継続利用でMarks蓄積、Sybil対策で複数ウォレット乱造より1〜数個で質の高いオンチェーン履歴が主流。
+  zkSync・Starknetでは1ウォレット数百〜数千ドル相当の配布実績あり。
+  
+  #Scroll #ScrollMarks #エアドロップ #zkRollup
 ---
 
 ## ポイント

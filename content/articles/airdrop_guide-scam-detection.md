@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "beginner"
 thumbnail: "airdrop_guide-scam-detection.webp"
 type: "airdrop"
+x_post: |
+  🚨 偽エアドロップ詐欺、2025年被害額170億ドル超
+  
+  AIで精巧に複製されたクレームサイト、DM誘導、Approval悪用のドレイナー——手口は三段重ね。
+  FBIが偽「FBIトークン」詐欺を公式警告するレベルまで深刻化。
+  一度抜かれたらトランザクションは不可逆。「見た目で判断」はもう通用しない。
+  
+  #エアドロップ #フィッシング詐欺 #ウォレットセキュリティ #Airdrop
 ---
 
 ## ポイント

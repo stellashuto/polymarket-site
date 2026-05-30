@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: ""
 type: "airdrop"
+x_post: |
+  🔍 HIP-1トークン、上場後72時間が勝負の分かれ目
+  
+  Hyperliquid L1のHIP-1規格は上場即オーダーブック形式で取引開始。
+  早期アドレスはオンチェーンに刻まれ、スナップショット時に明確に識別される。
+  取引量・流動性提供・早期参加の3軸がHYPE型エアドロップの評価基準になりやすい。
+  
+  #Hyperliquid #HIP1 #エアドロップ #Airdrop
 ---
 
 ## ポイント

@@ -10,6 +10,13 @@ crypto_symbol: "USDC"
 crypto_category: "Stablecoin"
 thumbnail: "crypto_usdc.webp"
 type: "explainer"
+x_post: |
+  💵 USDC時価総額763億ドル、規制準拠ステーブルコインの現在地
+  
+  現金＋短期米国債で完全裏付け。GENIUSact立法化が進む米国でCircleはNYSE上場も果たし、グレーゾーンを完全脱出。
+  国内はSBI VCトレードのみ取扱い、2026年3月からはUSDCレンディングも開始。
+  
+  #USDC #ステーブルコイン #仮想通貨 #Circle
 ---
 
 ## ポイント

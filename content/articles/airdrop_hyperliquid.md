@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_hyperliquid.webp"
 type: "airdrop"
+x_post: |
+  🔥 HYPEが62.18ドルで過去最高値更新、ポイントプログラムはまだ動いている
+  
+  グレースケールが3本目のETF修正申請を提出し機関資金が流入加速。
+  Perp・Spot両方がポイント対象で、Spot取引は参入障壁が低く継続しやすい。
+  Sybil検知対策と受領時の雑所得課税は事前に把握必須。
+  
+  #Hyperliquid #HYPE #エアドロップ #DEX
 ---
 
 ## ポイント

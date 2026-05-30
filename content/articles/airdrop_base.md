@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_base.webp"
 type: "airdrop"
+x_post: |
+  🔵 BaseエコシステムはトークンなしでもPnL出せる構造になっている
+  
+  Aerodrome・ExtraなどBase上のDeFiが既にエアドロ実施済み。
+  CoinbaseバックでTVLは2024年に急拡大、資金導線が他L2より明確に強い。
+  Sybil検知が厳格化した今、複数アドレスより1アドレスの質が問われる。
+  
+  #Base #エアドロップ #Aerodrome #DeFi
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_megaeth.webp"
 type: "airdrop"
+x_post: |
+  🚀 MegaETHテストネット、今が仕込み時
+  
+  1万TPS・10ms以下のブロック時間を目指すEthereum L2。
+  a16z出資済み、Polymarketでメインネットオッズまで動く注目度。
+  ウォレット数より「継続参加の質」でSybil判定される時代——Discord活動やGitcoin Passportが差になる。
+  
+  #MegaETH #エアドロップ #Airdrop #L2
 ---
 
 ## ポイント

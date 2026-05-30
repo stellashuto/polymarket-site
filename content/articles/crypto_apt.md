@@ -10,6 +10,14 @@ crypto_symbol: "APT"
 crypto_category: "L1"
 thumbnail: "crypto_apt.webp"
 type: "explainer"
+x_post: |
+  🏛️ APTが「デジタルコモディティ」認定——BTC・ETHと同列へ
+  
+  2026年3月、SECとCFTCの共同規則でAPTの規制上の立ち位置が確定。
+  同月には総供給上限21億枚設定・ステーキング報酬半減・ガス代10倍バーンのトークノミクス改革も提案済み。
+  時価総額約7.6億ドル（CoinGecko 82位前後）から機関勢が再び動き始めている。
+  
+  #Aptos #APT #デジタルコモディティ #仮想通貨規制
 ---
 
 ## ポイント

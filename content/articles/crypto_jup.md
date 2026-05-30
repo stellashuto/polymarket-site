@@ -10,6 +10,13 @@ crypto_symbol: "JUP"
 crypto_category: "DeFi"
 thumbnail: "crypto_jup.webp"
 type: "explainer"
+x_post: |
+  🪐 JupiterがSolana DeFiの95%を握る「スーパーアプリ」へ
+  
+  スワップ・指値・100倍レバレッジ先物・レンディング・独自ステーブルJupUSDを一手に担い、2026年5月にはSecuritize・Jumpと組んでトークン化株式のオンチェーン取引も始動。
+  JUPは国内未上場、BinanceやBybitでのみ取得可能。
+  
+  #Jupiter #JUP #SolanaDeFi #仮想通貨
 ---
 
 ## ポイント

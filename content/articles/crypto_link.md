@@ -10,6 +10,13 @@ crypto_symbol: "LINK"
 crypto_category: "DeFi"
 thumbnail: "crypto_link.webp"
 type: "explainer"
+x_post: |
+  🔗 LINKは$9台でも、ファンダメンタルズは過去最高ペースで積み上がっている
+  
+  ETF2本（CLNK・GLNK）が相次いで上場、DTCC統合にAWS Marketplace展開まで完了。
+  インフラ層としての採用は加速中、価格だけが2021年高値$52.99から取り残された格好。
+  
+  #Chainlink #LINK #DeFi #仮想通貨
 ---
 
 ## ポイント

@@ -10,6 +10,14 @@ crypto_symbol: "ETH"
 crypto_category: "L1"
 thumbnail: "crypto_eth.webp"
 type: "explainer"
+x_post: |
+  🔷 ETHは「デジタルゴールド」ではなく「動くプラットフォーム」
+  
+  時価総額約2,490億ドルで世界2位を維持。
+  2022年のPoS移行でエネルギー消費99%超削減、2024年にはスポットETF承認で機関マネーの入口も整備済み。
+  DeFi・NFT・L2と積み上がるエコシステムが、ビットコインとの本質的な違い。
+  
+  #イーサリアム #ETH #仮想通貨 #DeFi
 ---
 
 ## ポイント

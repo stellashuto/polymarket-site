@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "beginner"
 thumbnail: "airdrop_guide-airdrop-basics.webp"
 type: "airdrop"
+x_post: |
+  🪂 エアドロップは「タダ」じゃない——仕組みを知らずに動くと損する
+  
+  UNI・ARBでは1ウォレット数百〜数千ドル相当の配布実績あり。
+  ただし受領時点で時価による雑所得課税、ガス代、時間コストが発生する。
+  最近の大型案件はSNSタスクではなくオンチェーン行動履歴で選別される。
+  
+  #エアドロップ #Airdrop #DeFi #仮想通貨税務
 ---
 
 ## ポイント

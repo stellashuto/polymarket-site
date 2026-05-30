@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_renzo.webp"
 type: "airdrop"
+x_post: |
+  🔄 ezETH保有だけでポイントが二重積算──Renzoのリステーキング戦略
+  
+  EigenLayer Points × Renzo Pointsを同時取得できるLRT構造。
+  REZのTGEは実施済みで、過去事例では1ウォレット数百〜数千ドル相当の配布報告も。
+  Sybil対策は分散より「1ウォレット集中ステーク」が有効。日本居住者は受領時の雑所得課税に要注意。
+  
+  #Renzo #EigenLayer #リステーキング #エアドロップ
 ---
 
 ## ポイント

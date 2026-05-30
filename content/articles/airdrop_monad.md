@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_monad.webp"
 type: "airdrop"
+x_post: |
+  🔍 Monad第1回エアドロップは終了、次の一手を整理する
+  
+  申請窓口は2025年11月3日に閉鎖済み。
+  メインネット稼働中のMONはICO価格0.025ドルを下回る局面も継続中。
+  2026年11月24日にチーム・投資家トークンの初アンロックが控え、売り圧力には注意。
+  
+  #Monad #MON #エアドロップ #アンロック
 ---
 
 ## ポイント

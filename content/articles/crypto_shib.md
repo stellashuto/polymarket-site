@@ -10,6 +10,14 @@ crypto_symbol: "SHIB"
 crypto_category: "Meme"
 thumbnail: "crypto_shib.webp"
 type: "explainer"
+x_post: |
+  🐕 SHIBはもう「ミームコイン」だけじゃない
+  
+  L2チェーンShibariumの累計取引5億件超。
+  T. Rowe PriceがETF申請にSHIBを追加、SECはデジタルコモディティ分類、日本当局もグリーンリスト入り。
+  規制・機関・インフラの三方向から構造が変わってきた。
+  
+  #SHIB #Shibarium #仮想通貨 #ミームコイン
 ---
 
 ## ポイント

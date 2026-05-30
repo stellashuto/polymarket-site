@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "intermediate"
 thumbnail: "airdrop_guide-testnet-strategy.webp"
 type: "airdrop"
+x_post: |
+  🎯 テストネット参加だけでは通らない時代へ
+  
+  Monadは4.73億MONを28.9万アカウントに配布。
+  選考基準はDeFi実績・NFT保有歴・コミュニティ貢献。
+  MegaETH Season 1（〜6月23日）はまだ窓が開いており、AI搭載Sybil検知を前提に「ウォレット・ナラティブ」を積む動きが加速中。
+  
+  #エアドロップ #MegaETH #Monad #Airdrop
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_sonic-svm.webp"
 type: "airdrop"
+x_post: |
+  🎮 Sonic SVM——Solana初のゲーム特化L2でエアドロ準備
+  
+  SVM（Solana Virtual Machine）をL2として切り出し、高頻度ゲームTxに最適化。
+  Jupiter・Jitoでは1ウォレット数百〜数千ドル配布の前例あり。
+  テストネット参加・取引・ゲームタスクが評価軸。Sybil対策でウォレット分離は必須。
+  
+  #SonicSVM #エアドロップ #Solana #Airdrop
 ---
 
 ## ポイント

@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_symbiotic.webp"
 type: "airdrop"
+x_post: |
+  🪙 EigenLayer対抗のリステーキング新鋭・Symbioticがポイント蓄積フェーズ中
+  
+  Lido・Paradigm支援。2024年6月ローンチ直後にCap即日完売。
+  トークン未発行・エアドロ未実施の今が初期参加の分岐点。
+  担保資産の柔軟性がEigenLayerとの最大の差別化ポイント。
+  
+  #Symbiotic #リステーキング #エアドロップ #Restaking
 ---
 
 ## ポイント

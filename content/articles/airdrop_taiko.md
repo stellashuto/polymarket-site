@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: ""
 type: "airdrop"
+x_post: |
+  🔄 Taikoエアドロップ、初回配布後も継続中
+  
+  2024年のTAIKO初回配布は終了済みだが、Loyalty Programは現在も稼働中。
+  Type-1 zkEVMの特性上、質の高いオンチェーン活動が評価軸。
+  Sybil対策が強化されており、複数アドレスの機械的操作は逆効果。
+  
+  #Taiko #zkEVM #エアドロップ #LoyaltyProgram
 ---
 
 ## ポイント

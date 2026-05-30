@@ -10,6 +10,14 @@ crypto_symbol: "SUI"
 crypto_category: "L1"
 thumbnail: "crypto_sui.webp"
 type: "explainer"
+x_post: |
+  📡 SUIが機関化加速——同時にネットワーク2日連続停止
+  
+  Grayscale・Canary・21sharesのスポットETFが2026年2月に相次ぎ上場。
+  CME先物は5月29日に開始。その前日から2日連続のバグ起因障害という皮肉なタイミング。
+  信頼性と機関需要、両方を同時に問われている局面。
+  
+  #SUI #仮想通貨 #CME先物 #レイヤー1
 ---
 
 ## ポイント

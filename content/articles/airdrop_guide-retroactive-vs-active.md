@@ -11,6 +11,14 @@ airdrop_kind: "guide"
 audience: "intermediate"
 thumbnail: "airdrop_guide-retroactive-vs-active.webp"
 type: "airdrop"
+x_post: |
+  🔀 遡及型か公表型か——戦略を分けると期待値が変わる
+  
+  UNI配布時は400UNI／ウォレット、ARBはオンチェーン活動の「深さ」で傾斜配布。
+  同規模の再現は保証されないが、資金は遡及候補に置きつつ公表型はマルチウォレット並走が現状の最適解に近い。
+  受領時の時価が雑所得課税対象になる点も見落とすと痛い。
+  
+  #エアドロップ #Airdrop #Sybil対策 #DeFi
 ---
 
 ## ポイント

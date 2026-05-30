@@ -11,6 +11,14 @@ airdrop_kind: "project"
 audience: "intermediate"
 thumbnail: "airdrop_linea.webp"
 type: "airdrop"
+x_post: |
+  🔵 ConsenSys製zkEVM「Linea」のLXP、今が積み上げ時
+  
+  MetaMask開発元が手掛けるL2で、オンチェーンポイントLXPがスナップショット基準になる公算大。
+  ブリッジ・スワップ・DeFi・NFTミントと複数カテゴリの継続利用が評価軸。
+  Sybil対策強化中につき、複数ウォレットの機械的操作はリスク。
+  
+  #Linea #LXP #エアドロップ #zkEVM
 ---
 
 ## ポイント
